@@ -14,7 +14,7 @@ class ContractController extends Controller
      */
     public function index()
     {
-        //
+        return view('modules.contract.index');
     }
 
     /**
@@ -35,7 +35,7 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -81,5 +81,18 @@ class ContractController extends Controller
     public function destroy(Contract $contract)
     {
         //
+    }
+
+    public function downloadpdf(){
+        $data = [
+            'titulo' => 'Aliados Inmobiliarios sa',
+            'subtitulo' => 'Contrato de Arrendamiento sin Administracion',
+            'administrador' => 'ADMINISTRADOR: ALIADOS INMOBILIARIOS S.A. identificado con Nit No. 802.025.198-7 representada legalmente por JOSE EDUARDO FERREIRA DAZA identificado con la cédula de ciudadanía No. 79.270.662 expedida en Bogotá D.C. ',
+            'propietario' => 'PROPIETARIO: COMERCIALIZADORA SAYARA S.A.S., identificado con Nit. 900.360.741-8 representada legalmente por YUBRAN ABEL BARAKAT BARRANCO identificado con número de cedula No.84.070.197 expedida en Maicao.'
+        ];
+
+        $pdf = \PDF::loadView('pdf.contract', $data);
+
+        return $pdf->download('archivo.pdf');
     }
 }

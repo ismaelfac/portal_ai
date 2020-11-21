@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('/contracts', App\Http\Controllers\ContractController::class);
+Route::resource('/templates', App\Http\Controllers\TemplateController::class);
+Route::resource('/components', App\Http\Controllers\ComponentController::class);
+Route::get('/downloadpdf', [App\Http\Controllers\ContractController::class, 'downloadpdf'])->name('downloadpdf');
