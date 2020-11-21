@@ -13,5 +13,5 @@ class Contract extends Component {
 export default Contract;
 
 if (document.getElementById('contract_viewport')) {
-    ReactDOM.render(Contract, document.getElementById('contract_viewport'));
+    ReactDOM.render(<Contract/>, document.getElementById('contract_viewport'));
 }

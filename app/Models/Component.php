@@ -9,4 +9,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Component extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'isActive',
+    ];
+
+    protected $casts = [
+        'isActive' => 'boolean',
+    ];
 }

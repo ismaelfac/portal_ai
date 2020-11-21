@@ -37400,7 +37400,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
-Promise.all(/*! AMD require */[__webpack_require__.e(2), __webpack_require__.e(3)]).then(function() {[__webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js"), __webpack_require__(/*! ./components/Contract/index */ "./resources/js/components/Contract/index.js")];}).catch(__webpack_require__.oe);
+Promise.all(/*! AMD require */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(function() {[__webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js"), __webpack_require__(/*! ./components/Contract/index */ "./resources/js/components/Contract/index.js")];}).catch(__webpack_require__.oe);
 
 /***/ }),
 
