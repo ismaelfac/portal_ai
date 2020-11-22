@@ -14,7 +14,8 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        return view('modules.component.index');
+        $components = Component::paginate(10);
+        return view('modules.component.index', compact('components'));
     }
 
     /**

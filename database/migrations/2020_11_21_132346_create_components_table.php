@@ -16,7 +16,7 @@ class CreateComponentsTable extends Migration
         Schema::create('components', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->mediumText('description');
+            $table->mediumText('content');
             $table->boolean('isActive')->default(false);
             $table->timestamps();
             $table->softDeletes();
