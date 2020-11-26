@@ -15,10 +15,10 @@ class CreateComponentContractsTable extends Migration
     {
         Schema::create('component_contracts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('component_id')->references('id')->on('components')
+            $table->foreignId('contract_id')->references('id')->on('contracts')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->foreignId('contract_id')->references('id')->on('contracts')
+            $table->foreignId('component_id')->references('id')->on('components')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->boolean('isActive')->default(false);

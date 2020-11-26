@@ -17,7 +17,7 @@
                         <table class="table table-hover table-sm">
                             <thead>
                               <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">Codigo</th>
                                 <th scope="col">Titulo</th>
                                 <th scope="col">Componentes Aplicados</th>
                                 <th scope="col">Opciones</th>
@@ -26,7 +26,7 @@
                             <tbody>
                               @forelse ($contracts as $contract)
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <td>{{ $contract->code}}</td>
                                     <td style="text-align: center">{{ $contract->title }}</td>
                                     <td>
                                         <ul class="list-group">
