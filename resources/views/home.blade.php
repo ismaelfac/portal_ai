@@ -44,6 +44,7 @@
                               </div>
                         </div>
                         <div class="row">
+                            <div class="card-header">{{ __('Plantillas Favoritas') }}</div>
                             <table class="table table-hover table-sm">
                                 <thead>
                                   <tr>

@@ -18,6 +18,7 @@ class CreateComponentsTable extends Migration
             $table->string('title');
             $table->mediumText('content');
             $table->boolean('isActive')->default(false);
+            $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->timestamps();
             $table->softDeletes();
         });

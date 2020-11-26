@@ -27,8 +27,8 @@
                               @forelse ($components as $component)
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>{{ $component->title }}</td>
-                                    <td>{{ $component->content }}</td>
+                                    <td style="text-align: center">{{ $component->title }}</td>
+                                    <td style="text-align: justify">{!! $component->content !!}</td>
                                     <td><a href="{{ route("components.edit", ["component" => $component ])}}" class="btn btn-outline-danger">Editar</a></td>
                                 </tr>
                               @empty
@@ -38,6 +38,7 @@
                               @endforelse
                             </tbody>
                           </table>
+                          {{ $components->links() }}
                     </div>
                 </div>
             </div>

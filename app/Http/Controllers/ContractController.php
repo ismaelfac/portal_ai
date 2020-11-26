@@ -14,7 +14,8 @@ class ContractController extends Controller
      */
     public function index()
     {
-        return view('modules.contract.index');
+        $contracts = Contract::paginate(10);
+        return view('modules.contract.index', compact('contracts'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ContractController extends Controller
      */
     public function create()
     {
-        //
+        return view('modules.contract.create');
     }
 
     /**

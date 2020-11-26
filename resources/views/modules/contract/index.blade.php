@@ -11,11 +11,42 @@
                 </ol>
             </nav>
             <div class="card">
-                <div class="card-header">{{ __('Contratos') }}</div>
-                <div id="contract_viewport" class="card-body">
-                    <form action="">
+            <div class="card-header">{{ __('Contratos') }} <span style="float: right;"><a href="{{ route("contracts.create")}}" class="btn btn-outline-danger">{{ __("Crear Contrato")}}</a></span></div>
+                <div class="card-body">
+                    <div class="row">
+                        <table class="table table-hover table-sm">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Titulo</th>
+                                <th scope="col">Componentes Aplicados</th>
+                                <th scope="col">Opciones</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @forelse ($contracts as $contract)
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td style="text-align: center">{{ $contract->title }}</td>
+                                    <td>
+                                        <ul class="list-group">
+                                            @foreach ($components as $component)
+                                                <li class="list-group-item">{{ $component->name }}</li>
+                                            @endforeach
 
-                    </form>
+                                        </ul>
+                                    </td>
+                                    <td><a href="{{ route("contracts.edit", ["contract" => $contract ])}}" class="btn btn-outline-danger">Editar</a></td>
+                                </tr>
+                              @empty
+                                <tr>
+                                    <th colspan="3"><div><p>No existen datos</p></div></th>
+                                </tr>
+                              @endforelse
+                            </tbody>
+                          </table>
+                          {{ $contracts->links() }}
+                    </div>
                 </div>
             </div>
         </div>

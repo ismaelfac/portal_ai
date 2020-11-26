@@ -10,13 +10,16 @@ class Component extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'title',
-        'description',
-        'isActive',
-    ];
+    protected $fillable = ['title', 'content', 'isActive'];
 
-    protected $casts = [
-        'isActive' => 'boolean',
-    ];
+    protected $casts = ['isActive' => 'boolean'];
+
+    // protected static function boot() {
+    //     parent::boot();
+    //     self::creating(function ($table) {
+    //         if(! app()->runningInConsole()) {
+    //             $table->user_id = auth()->id();
+    //         }
+    //     });
+    // }
 }

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Component;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use Str;
 
-class ComponentController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        $components = Component::paginate(10);
-        return view('modules.component.index', compact('components'));
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class ComponentController extends Controller
      */
     public function create()
     {
-        return view('modules.component.create');
+        //
     }
 
     /**
@@ -37,32 +35,27 @@ class ComponentController extends Controller
      */
     public function store(Request $request)
     {
-        $component = Component::create([
-            "title" => $request['title'],
-            "content" => $request['content']
-        ]);
-        //dd($component);
-        return redirect()->route("components.index", $component->id)->with("success", __("Componente Creado"));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Component  $component
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Component $component)
+    public function show(Category $category)
     {
-
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Component  $component
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Component $component)
+    public function edit(Category $category)
     {
         //
     }
@@ -71,10 +64,10 @@ class ComponentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Component  $component
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Component $component)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -82,10 +75,10 @@ class ComponentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Component  $component
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Component $component)
+    public function destroy(Category $category)
     {
         //
     }

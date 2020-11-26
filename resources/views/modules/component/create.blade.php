@@ -7,25 +7,27 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Componentes</li>
+                  <li class="breadcrumb-item" aria-current="page"><a href="/components">Componentes</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Crear</li>
                 </ol>
             </nav>
             <div class="card">
-                <div class="card-header">{{ __('Componentes') }}</div>
+                <div class="card-header">{{ __('Crear Componentes') }}</div>
                 <div class="card-body">
-                    <form action="">
+                    <form action="{{ route('components.store') }}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="input-group mb-3 col-md-12">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Titulo del Componente</span>
                                 </div>
-                                <input type="text" name="title_contract" class="form-control" placeholder="Titulo del contracto" aria-label="title_contract" aria-describedby="basic-addon1" />
+                                <input type="text" name="title" id="title" class="form-control" placeholder="Titulo del contracto" aria-label="title_contract" aria-describedby="basic-addon1" />
                             </div>
                             <div class="input-group mb-3 col-md-12">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Contenido del Componente</span>
                                 </div>
-                                <textarea class="form-control ckeditor" name="editor1" id="editor1" rows="5"></textarea>
+                                <textarea class="form-control ckeditor" name="content" id="content" rows="5" cols="10"></textarea>
                             </div>
                             <div class="input-group mb-3 col-md-12">
                                 <button type="submit" class="btn btn-outline-danger">Crear Componente</button>
@@ -37,4 +39,7 @@
         </div>
     </div>
 </div>
+<script src="">
+    CKEDITOR.replace('content');
+</script>
 @endsection
