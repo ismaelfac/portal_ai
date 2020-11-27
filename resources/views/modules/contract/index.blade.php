@@ -31,9 +31,9 @@
                                     <td>
                                         <ul class="list-group list-group-flush">
                                         @forelse ($contract->components as $component)
-                                            <a href="" class="list-group-item list-group-item-action">{{$component->id }} - {{ $component->title}}</a>
+                                        <li class="list-group-item list-group-item-action">{{ $component->title}} <span class="badge badge-primary badge-pill" style="float: right">{{ $component->id}}</span></li>
                                         @empty
-
+                                            <li class="list-group-item list-group-item-action">Sin componentes</li>
                                         @endforelse
                                             <a href="/contract_components" class="btn btn-outline-danger btn-sm">Asignar Componentes</a>
                                         </ul>
