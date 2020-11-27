@@ -14,7 +14,8 @@ class ContractController extends Controller
      */
     public function index()
     {
-        $contracts = Contract::paginate(10);
+        $contracts = Contract::with('components')->paginate(10);
+        dd($contracts);
         return view('modules.contract.index', compact('contracts'));
     }
 
@@ -36,7 +37,13 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $contract = Contract::create([
+            "code" => $request['contract_number'],
+            "title" => $request['title_contract'],
+            "description" => $request['description_contract'],
+            "isActive" => true
+        ]);
+        return redirect()->route("contracts.index", $contract->id)->with("success", __("Contrato Creado"));
     }
 
     /**

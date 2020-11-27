@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ComponentContract;
+use App\Models\Component;
 use Illuminate\Http\Request;
 
 class ComponentContractController extends Controller
@@ -14,7 +15,8 @@ class ComponentContractController extends Controller
      */
     public function index()
     {
-        //
+        $components = Component::select('id', 'title', 'content')->where('isActive',true)->paginate(10);
+        return view('modules.component_contract.index', compact('components'));
     }
 
     /**

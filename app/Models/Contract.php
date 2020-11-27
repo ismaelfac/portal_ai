@@ -11,6 +11,7 @@ class Contract extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'code',
         'title',
         'description',
         'isActive',
@@ -19,4 +20,9 @@ class Contract extends Model
     protected $casts = [
         'isActive' => 'boolean',
     ];
+
+    public function Components()
+    {
+        return $this->belongsToMany('App\Models\Component')->using('app\Models\ComponentContract');
+    }
 }
