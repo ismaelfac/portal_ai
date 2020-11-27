@@ -11,7 +11,7 @@
                 </ol>
             </nav>
             <div class="card">
-            <div class="card-header">{{ __('Contratos') }} <span style="float: right;"><a href="{{ route("contracts.create")}}" class="btn btn-outline-danger">{{ __("Crear Contrato")}}</a></span></div>
+            <div class="card-header">{{ __('Contratos') }} <span style="float: right;"><a href="{{ route("contracts.create")}}" class="btn btn-outline-danger btn-sm">{{ __("Crear Contrato")}}</a></span></div>
                 <div class="card-body">
                     <div class="row">
                         <table class="table table-hover table-sm">
@@ -27,14 +27,31 @@
                               @forelse ($contracts as $contract)
                                 <tr>
                                     <td>{{ $contract->code}}</td>
-                                    <td style="text-align: center">{{ $contract->title }}</td>
+                                    <td>{{ $contract->title }}</td>
                                     <td>
-                                        <a href="/contract_components" class="btn btn-outline-danger">Asignar Componentes</a>
+                                        <ul class="list-group list-group-flush">
+                                        @forelse ($contract->components as $component)
+                                            <a href="" class="list-group-item list-group-item-action">{{$component->id }} - {{ $component->title}}</a>
+                                        @empty
+
+                                        @endforelse
+                                            <a href="/contract_components" class="btn btn-outline-danger btn-sm">Asignar Componentes</a>
+                                        </ul>
                                     </td>
-                                    <td><a href="{{ route("contracts.edit", ["contract" => $contract ])}}" class="btn btn-outline-danger">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cursor-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M5 2a.5.5 0 0 1 .5-.5c.862 0 1.573.287 2.06.566.174.099.321.198.44.286.119-.088.266-.187.44-.286A4.165 4.165 0 0 1 10.5 1.5a.5.5 0 0 1 0 1c-.638 0-1.177.213-1.564.434a3.49 3.49 0 0 0-.436.294V7.5H9a.5.5 0 0 1 0 1h-.5v4.272c.1.08.248.187.436.294.387.221.926.434 1.564.434a.5.5 0 0 1 0 1 4.165 4.165 0 0 1-2.06-.566A4.561 4.561 0 0 1 8 13.65a4.561 4.561 0 0 1-.44.285 4.165 4.165 0 0 1-2.06.566.5.5 0 0 1 0-1c.638 0 1.177-.213 1.564-.434.188-.107.335-.214.436-.294V8.5H7a.5.5 0 0 1 0-1h.5V3.228a3.49 3.49 0 0 0-.436-.294A3.166 3.166 0 0 0 5.5 2.5.5.5 0 0 1 5 2zm3.352 1.355zm-.704 9.29z"/>
-                                        </svg></a></td>
+                                    <td>
+                                            <a href="{{ route("contracts.edit", ["contract" => $contract->id ])}}" class="btn btn-outline-danger btn-sm">
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"/>
+                                                <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                            </svg></a>
+                                            <a href="{{ url("downloadpdf", ["contract" => $contract->id]) }}" target="_blank" class="btn btn-outline-danger btn-sm">
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-word" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+                                                <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
+                                                <path fill-rule="evenodd" d="M4.879 6.515a.5.5 0 0 1 .606.364l1.036 4.144.997-3.655a.5.5 0 0 1 .964 0l.997 3.655 1.036-4.144a.5.5 0 0 1 .97.242l-1.5 6a.5.5 0 0 1-.967.01L8 9.402l-1.018 3.73a.5.5 0 0 1-.967-.01l-1.5-6a.5.5 0 0 1 .364-.606z"/>
+                                            </svg></a>
+
+                                    </td>
                                 </tr>
                               @empty
                                 <tr>

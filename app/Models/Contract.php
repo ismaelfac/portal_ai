@@ -23,6 +23,6 @@ class Contract extends Model
 
     public function Components()
     {
-        return $this->belongsToMany('App\Models\Component')->using('app\Models\ComponentContract');
+        return $this->belongsToMany('App\Models\Component')->using('App\Models\ComponentContract');
     }
 }

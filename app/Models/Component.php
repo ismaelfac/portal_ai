@@ -25,6 +25,6 @@ class Component extends Model
 
     public function Contracts()
     {
-        return $this->belongsToMany('App\Models\Contract')->using('app\Models\ComponentContract');
+        return $this->belongsToMany('App\Models\Contract')->using('App\Models\ComponentContract');
     }
 }

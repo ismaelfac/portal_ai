@@ -13,7 +13,7 @@ class CreateComponentContractsTable extends Migration
      */
     public function up()
     {
-        Schema::create('component_contracts', function (Blueprint $table) {
+        Schema::create('component_contract', function (Blueprint $table) {
             $table->id();
             $table->foreignId('contract_id')->references('id')->on('contracts')
                 ->onDelete('cascade')
@@ -33,6 +33,6 @@ class CreateComponentContractsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('component_contracts');
+        Schema::dropIfExists('component_contract');
     }
 }
