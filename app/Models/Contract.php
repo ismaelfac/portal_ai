@@ -25,4 +25,9 @@ class Contract extends Model
     {
         return $this->belongsToMany('App\Models\Component')->using('App\Models\ComponentContract');
     }
+
+    public function templates()
+    {
+        return $this->hasMany('App\Models\Template','contract_id');
+    }
 }

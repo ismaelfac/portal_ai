@@ -19,4 +19,9 @@ class Template extends Model
     protected $casts = [
         'isActive' => 'boolean',
     ];
+
+    public function Contract()
+    {
+        return $this->belongsTo('App\Models\Contract');
+    }
 }

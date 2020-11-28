@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Template;
+use App\Models\{ Contract, Template };
 use Illuminate\Http\Request;
 
 class TemplateController extends Controller
@@ -14,7 +14,8 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        return view('modules.template.index');
+        $templates = Template::with('contract')->where('isActive',true)->paginate();
+        return view('modules.template.index', compact('templates'));
     }
 
     /**
@@ -24,7 +25,8 @@ class TemplateController extends Controller
      */
     public function create()
     {
-        //
+        $contracts = Contract::select('id','title')->get();
+        return view('modules.template.create', compact('contracts'));
     }
 
     /**
@@ -35,7 +37,7 @@ class TemplateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

@@ -11,9 +11,32 @@
                 </ol>
             </nav>
             <div class="card">
-                <div class="card-header">{{ __('Template') }}</div>
-                <div class="card-body">
-
+                <div class="card-header">{{ __('Template') }}<span style="float: right;"><a href="{{ route("templates   .create")}}" class="btn btn-outline-danger">{{ __("Generar Plantilla")}}</a></span></div>
+                <table class="table table-hover table-sm">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Contrato Base</th>
+                            <th scope="col">Plantilla</th>
+                            <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($templates as $template)
+                            <tr>
+                                <th scope="row">{{ $template->id }}</th>
+                                <td>{{ $template->contract->title }}</td>
+                                <td>{!! $template->description !!}</td>
+                                <td><a href="{{ route("templates.edit", ["template" => $template ])}}" class="btn btn-outline-danger">Editar</a></td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <th colspan="3"><div><p>No existen datos</p></div></th>
+                            </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                    {{ $templates->links() }}
                 </div>
             </div>
         </div>
