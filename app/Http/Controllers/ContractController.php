@@ -15,7 +15,6 @@ class ContractController extends Controller
     public function index()
     {
         $contracts = Contract::with('components')->paginate(10);
-        //dd($contracts);
         return view('modules.contract.index', compact('contracts'));
     }
 
