@@ -11,7 +11,7 @@
                 </ol>
             </nav>
             <div class="card">
-                <div class="card-header">{{ __('Template') }}<span style="float: right;"><a href="{{ route("templates   .create")}}" class="btn btn-outline-danger">{{ __("Generar Plantilla")}}</a></span></div>
+                <div class="card-header">{{ __('Template') }}<span style="float: right;"><a href="{{ route("templates.create")}}" class="btn btn-outline-danger">{{ __("Generar Plantilla")}}</a></span></div>
                 <table class="table table-hover table-sm">
                         <thead>
                             <tr>

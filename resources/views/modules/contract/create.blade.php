@@ -23,12 +23,6 @@
                                 </div>
                                 <input type="text" name="title_contract" class="form-control" placeholder="Titulo del contracto" aria-label="title_contract" aria-describedby="basic-addon1" />
                             </div>
-                            <div class="input-group mb-3 col-md-6">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Número de Contrato</span>
-                                </div>
-                                <input type="text" name="contract_number" class="form-control" aria-label="contract_number" aria-describedby="basic-addon1" />
-                            </div>
                             <div class="input-group mb-3 col-md-12">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Descripcion del contrato</span>

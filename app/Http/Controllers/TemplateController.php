@@ -25,7 +25,7 @@ class TemplateController extends Controller
      */
     public function create()
     {
-        $contracts = Contract::select('id','title')->get();
+        $contracts = Contract::select('id','title')->where('isActive', true)->get();
         return view('modules.template.create', compact('contracts'));
     }
 
