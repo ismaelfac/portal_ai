@@ -24,4 +24,9 @@ class Template extends Model
     {
         return $this->belongsTo('App\Models\Contract');
     }
+
+    public function component_templates()
+    {
+        return $this->belongsTo('App\Models\ComponentTemplate');
+    }
 }
