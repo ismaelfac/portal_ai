@@ -29,6 +29,11 @@ class TemplateController extends Controller
         $contracts = Contract::select('id','title')->where('isActive', true)->get();
         $contentTemplate = Contract::with('components')->where('id',1)->get();
         //dd($contentTemplate);
+        $i = 0;
+        foreach ($contentTemplate[$i]->components as $component) {
+            dd($component->content);
+            $i++;
+        }
         return view('modules.template.create', compact('contracts','contentTemplate'));
     }
 
