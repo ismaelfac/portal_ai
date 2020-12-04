@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Crear Plantilla')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -7,32 +7,54 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
-                  <li class="breadcrumb-item" aria-current="page"><a href="/contracts">Plantilla</a></li>
+                  <li class="breadcrumb-item" aria-current="page"><a href="{{ route('templates.index')}}">Plantilla</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Crear</li>
                 </ol>
             </nav>
             <div class="card">
-                @forelse ($contentTemplate[0]->components as $item)
-                    <div class="accordion" id="contract{{ $item->id }}">
-                        <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne{{ $item->id }}" aria-expanded="true" aria-controls="collapseOne{{ $item->id }}">
-                                {!! $item->title !!}
-                            </button>
-                            </h2>
-                        </div>
-
-                        <div id="collapseOne{{ $item->id }}" class="collapse show" aria-labelledby="headingOne" data-parent="#contract{{ $item->id }}">
-                            <div class="card-body">
-                                {!! $item->content !!}
+                <div class="card-header">{{ __('Plantilla') }}</div>
+                <div id="contract" class="card-body">
+                    <form action="{{ route('templates.store') }}" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="input-group mb-3 col-md-6 col-sm-12">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text" for="inputGroupSelect01">Contrato Base</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01" name="contract_id">
+                                  @forelse ($contracts as $contract)
+                                    <option selected value="0">Escoja la base del contrato</option>
+                                    <option value="{{ $contract->id }}">{{ $contract->title }}</option>
+                                  @empty
+                                    <option value="0">Sin Informacion</option>
+                                  @endforelse
+                                </select>
+                            </div>
+                            <div class="input-group mb-3 col-md-6 col-sm-12">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Titulo</span>
+                                </div>
+                                <input type="text" name="title_template" class="form-control" placeholder="Titulo del Documento" aria-label="title_contract" aria-describedby="basic-addon1" />
+                            </div>
+                            <div class="input-group mb-3 col-md-4 col-sm-12">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Documento</span>
+                                </div>
+                                <input type="text" name="template_number" class="form-control" aria-label="template_number" aria-describedby="basic-addon1" />
+                            </div>
+                            <div class="input-group mb-3 col-md-8 col-sm-12">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Descripcion del contrato</span>
+                                </div>
+                                <input type="text" name="description_template" class="form-control" placeholder="Descripcion del documento" aria-label="description_contract" aria-describedby="basic-addon1" />
+                            </div>
+                            <div class="input-group mb-3 col-md-12">
+                                <button type="submit" class="btn btn-outline-danger">Crear Plantilla</button>
                             </div>
                         </div>
-                        </div>
-                    </div>
-                @empty
-                    @include('modules.template.info_template')
-                @endforelse
+                    </form>
+
+                </div>
             </div>
         </div>
     </div>

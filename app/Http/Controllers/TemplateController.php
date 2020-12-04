@@ -28,12 +28,6 @@ class TemplateController extends Controller
     {
         $contracts = Contract::select('id','title')->where('isActive', true)->get();
         $contentTemplate = Contract::with('components')->where('id',1)->get();
-        //dd($contentTemplate);
-        $i = 0;
-        foreach ($contentTemplate[$i]->components as $component) {
-            //dd($component->content);
-            $i++;
-        }
         return view('modules.template.create', compact('contracts','contentTemplate'));
     }
 
@@ -45,7 +39,13 @@ class TemplateController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $template = Template::create([
+            "contract_id" => $request['contract_id'],
+            "title" => $request['title_template'],
+            "description" => $request['description_template'],
+            "isActive" => true
+        ]);
+        return redirect()->route("templates.index", $template->id)->with("success", __("Contrato Creado"));
     }
 
     /**
