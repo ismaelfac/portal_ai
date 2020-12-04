@@ -22,9 +22,10 @@ class ComponentTemplateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($template_id)
     {
-        //
+        dd($template_id);
+        return view('modules.component_template.create');
     }
 
     /**
