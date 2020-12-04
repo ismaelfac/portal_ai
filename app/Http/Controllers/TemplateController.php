@@ -41,8 +41,8 @@ class TemplateController extends Controller
     {
         $template = Template::create([
             "contract_id" => $request['contract_id'],
-            "title" => $request['title_template'],
-            "description" => $request['description_template'],
+            "title" => strtoupper($request['title_template']),
+            "description" => strtoupper($request['description_template']),
             "isActive" => true
         ]);
         return redirect()->route("templates.index", $template->id)->with("success", __("Contrato Creado"));

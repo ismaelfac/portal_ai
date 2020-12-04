@@ -11,6 +11,7 @@ class Template extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'contract_id',
         'title',
         'description',
         'isActive',
