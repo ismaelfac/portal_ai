@@ -20,8 +20,13 @@ class Template extends Model
         'isActive' => 'boolean',
     ];
 
-    public function Contract()
+    public function contract()
     {
         return $this->belongsTo('App\Models\Contract');
+    }
+
+    public function component_templates()
+    {
+        return $this->belongsTo('App\Models\ComponentTemplate');
     }
 }

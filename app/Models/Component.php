@@ -23,7 +23,7 @@ class Component extends Model
     //     });
     // }
 
-    public function Contracts()
+    public function contracts()
     {
         return $this->belongsToMany('App\Models\Contract')->using('App\Models\ComponentContract');
     }

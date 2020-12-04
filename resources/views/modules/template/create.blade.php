@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Crear Plantilla')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -7,7 +7,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
-                  <li class="breadcrumb-item" aria-current="page"><a href="/contracts">Plantilla</a></li>
+                  <li class="breadcrumb-item" aria-current="page"><a href="{{ route('templates.index')}}">Plantilla</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Crear</li>
                 </ol>
             </nav>
@@ -21,9 +21,10 @@
                                 <div class="input-group-prepend">
                                   <label class="input-group-text" for="inputGroupSelect01">Contrato Base</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
+                                <select class="custom-select" id="inputGroupSelect01" name="contract_id">
                                   @forelse ($contracts as $contract)
-                                <option selected>{{ $contract->title }}</option>
+                                    <option selected value="0">Escoja la base del contrato</option>
+                                    <option value="{{ $contract->id }}">{{ $contract->title }}</option>
                                   @empty
                                     <option value="0">Sin Informacion</option>
                                   @endforelse
@@ -31,17 +32,17 @@
                             </div>
                             <div class="input-group mb-3 col-md-6 col-sm-12">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Número de Documento</span>
-                                </div>
-                                <input type="text" name="template_number" class="form-control" aria-label="template_number" aria-describedby="basic-addon1" />
-                            </div>
-                            <div class="input-group mb-3 col-md-6 col-sm-12">
-                                <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Titulo</span>
                                 </div>
                                 <input type="text" name="title_template" class="form-control" placeholder="Titulo del Documento" aria-label="title_contract" aria-describedby="basic-addon1" />
                             </div>
-                            <div class="input-group mb-3 col-md-6 col-sm-12">
+                            <div class="input-group mb-3 col-md-4 col-sm-12">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Documento</span>
+                                </div>
+                                <input type="text" name="template_number" class="form-control" aria-label="template_number" aria-describedby="basic-addon1" />
+                            </div>
+                            <div class="input-group mb-3 col-md-8 col-sm-12">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Descripcion del contrato</span>
                                 </div>
@@ -52,22 +53,7 @@
                             </div>
                         </div>
                     </form>
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                        </li>
-                      </ul>
-                      <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-                      </div>
+
                 </div>
             </div>
         </div>

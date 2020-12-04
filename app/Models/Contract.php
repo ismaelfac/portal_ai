@@ -21,7 +21,7 @@ class Contract extends Model
         'isActive' => 'boolean',
     ];
 
-    public function Components()
+    public function components()
     {
         return $this->belongsToMany('App\Models\Component')->using('App\Models\ComponentContract');
     }
