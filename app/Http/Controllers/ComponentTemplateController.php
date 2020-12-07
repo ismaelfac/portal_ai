@@ -32,6 +32,7 @@ class ComponentTemplateController extends Controller
     public function create($template, $componentTemplate)
     {
         $contracts = [];
+        //dd($template);
         return view('modules.component_template.create', compact('template', 'componentTemplate', 'contracts'));
     }
 
