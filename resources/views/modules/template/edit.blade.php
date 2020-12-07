@@ -16,6 +16,9 @@
                 <div id="contract" class="card-body">
                     <form action="{{ route('templates.store') }}" method="POST">
                         @include('modules.template.form_crud')
+                        <div class="input-group mb-3 col-md-12">
+                            <button type="submit" class="btn btn-outline-danger">Crear Plantilla</button>
+                        </div>
                     </form>
 
                 </div>

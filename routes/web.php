@@ -25,4 +25,5 @@ Route::resource('/templates', App\Http\Controllers\TemplateController::class);
 Route::resource('/components', App\Http\Controllers\ComponentController::class);
 Route::resource('/contract_components', App\Http\Controllers\ComponentContractController::class);
 Route::resource('/components_template', App\Http\Controllers\ComponentTemplateController::class);
+Route::get('/components_template_id/{id}', [App\Http\Controllers\ComponentTemplateController::class, 'getComponentTemplate']);
 Route::get('/downloadpdf/{id}', [App\Http\Controllers\ContractController::class, 'downloadpdf'])->name('downloadpdf');

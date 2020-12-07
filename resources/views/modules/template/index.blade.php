@@ -27,8 +27,8 @@
                                 <th scope="row">{{ $template->id }}</th>
                                 <td>{{ $template->contract->title }}</td>
                                 <td>{!! $template->description !!}</td>
-                                <td><a href="{{ route("templates.edit", ["template" => $template->id ])}}" class="btn btn-outline-danger">Editar</a></td>
-                                <td><a href="{{ route("components_template.create", ["component_template" => $template->id ])}}" class="btn btn-outline-danger">Diligenciar</a></td>
+                                <td><a href="{{ route("templates.edit", ["template" => $template->id ])}}" class="btn btn-outline-danger btn-sm">Editar</a></td>
+                                <td><a href="{{ url("components_template_id/{$template->id}") }}" class="btn btn-outline-danger btn-sm">Sin Diligenciar</a></td>
                             </tr>
                             @empty
                             <tr>

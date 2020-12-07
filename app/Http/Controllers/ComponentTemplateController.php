@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ComponentTemplate;
+use App\Models\{ Contract, Template, ComponentTemplate };
 use Illuminate\Http\Request;
 
 class ComponentTemplateController extends Controller
@@ -22,10 +22,17 @@ class ComponentTemplateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($template_id)
+    public function getComponentTemplate($template_id){
+        $template = Template::with('contract')->where('id',$template_id)->get();
+        $contract_id = $template[0]->contract->id;
+        $components = Contract::with('components')->where('id',$contract_id)->get();
+        $componentTemplate = $components[0]->components;
+        return $this->create($template, $componentTemplate);
+    }
+    public function create($template, $componentTemplate)
     {
-        dd($template_id);
-        return view('modules.component_template.create');
+        $contracts = [];
+        return view('modules.component_template.create', compact('template', 'componentTemplate', 'contracts'));
     }
 
     /**

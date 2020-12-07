@@ -17,7 +17,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Titulo</span>
         </div>
-        <input type="text" name="title_template" value="{{ old('title')}}" class="form-control" placeholder="Titulo del Documento" aria-label="title_contract" aria-describedby="basic-addon1" />
+        <input type="text" name="title_template" value="{{ old('template.title')}}" class="form-control" placeholder="Titulo del Documento" aria-label="title_contract" aria-describedby="basic-addon1" />
     </div>
     <div class="input-group mb-3 col-md-4 col-sm-12">
         <div class="input-group-prepend">
@@ -30,8 +30,5 @@
             <span class="input-group-text" id="basic-addon1">Descripcion del contrato</span>
         </div>
         <input type="text" name="description_template" value="{{ old('description')}}" class="form-control" placeholder="Descripcion del documento" aria-label="description_contract" aria-describedby="basic-addon1" />
-    </div>
-    <div class="input-group mb-3 col-md-12">
-        <button type="submit" class="btn btn-outline-danger">Crear Plantilla</button>
     </div>
 </div>

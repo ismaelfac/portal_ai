@@ -1,6 +1,9 @@
-@section('name')
+@extends('layouts.app')
+@section('title','Diligenciar Plantilla')
+@section('content')
 <div class="card">
-    @forelse ($contentTemplate[0]->components as $item)
+    @include('modules.template.form_crud')
+    @forelse ($componentTemplate as $item)
         <div class="accordion" id="contract{{ $item->id }}">
             <div class="card">
             <div class="card-header" id="headingOne">
