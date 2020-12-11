@@ -27,8 +27,7 @@ class TemplateController extends Controller
     public function create()
     {
         $contracts = Contract::select('id','title')->where('isActive', true)->get();
-        $contentTemplate = Contract::with('components')->where('id',1)->get();
-        return view('modules.template.create', compact('contracts','contentTemplate'));
+        return view('modules.template.create', compact('contracts'));
     }
 
     /**
@@ -45,6 +44,7 @@ class TemplateController extends Controller
             "description" => strtoupper($request['description_template']),
             "isActive" => true
         ]);
+
         return redirect()->route("templates.index", $template->id)->with("success", __("Contrato Creado"));
     }
 

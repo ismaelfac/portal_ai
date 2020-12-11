@@ -11,9 +11,9 @@
                   <li class="breadcrumb-item active" aria-current="page">Componentes de Plantilla</li>
                 </ol>
             </nav>
-            <div class="card">
+            <div class="card mb-4">
                 @foreach ($template as $template)
-                @include('modules.template.form_crud')
+                    @include('modules.template.form_crud')
                 @endforeach
             </div>
             <div class="card">
