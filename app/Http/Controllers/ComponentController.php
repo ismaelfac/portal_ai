@@ -39,8 +39,10 @@ class ComponentController extends Controller
     public function store(Request $request)
     {
         $component = Component::create([
+            "component_type_id" => $request['component_type_id'],
             "title" => $request['title'],
-            "content" => $request['content']
+            "content" => $request['content'],
+            "isActive" => true
         ]);
         //dd($component);
         return redirect()->route("components.index", $component->id)->with("success", __("Componente Creado"));

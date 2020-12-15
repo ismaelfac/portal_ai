@@ -27,7 +27,7 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="inputGroupSelect01">Tipo de Componente</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01" name="contract_id">
+                                <select class="custom-select" id="inputGroupSelect01" name="component_type_id">
                                     <option selected value="0">Escoja la base del contrato</option>
                                     @forelse ($component_types as $component_type)
                                         <option value="{{ $component_type->id }}">{{ $component_type->title }}</option>
