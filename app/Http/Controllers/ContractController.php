@@ -37,7 +37,7 @@ class ContractController extends Controller
     public function store(Request $request)
     {
         $contract = Contract::create([
-            "code" => $request['contract_number'],
+            "code" => 23445567,
             "title" => $request['title_contract'],
             "description" => $request['description_contract'],
             "isActive" => true

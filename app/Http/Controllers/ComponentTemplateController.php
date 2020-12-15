@@ -23,10 +23,8 @@ class ComponentTemplateController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function getComponentTemplate($template_id){
-        $template = Template::with('contract')->where('id',$template_id)->get();//obtengo el template
-        $contract_id = $template[0]->contract->id; //Capturo el id el contrato base
-        $contracts = Contract::with('components')->where('id',$contract_id)->get(); //obtengo el contrato con los componentes
-        $componentTemplate = $contracts[0]->components; //obtengo los componentes
+        $template = Template::with('component_templates')->where('id',$template_id)->get();//obtengo el template
+        dd($template);
         return $this->create($template, $componentTemplate);
     }
     public function create($template, $componentTemplate)

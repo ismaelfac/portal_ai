@@ -9,6 +9,12 @@ class ComponentTemplate extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'template_id',
+        'component_id',
+        'content',
+    ];
+
     public function template()
     {
         return $this->belongsTo('App\Models\Template');

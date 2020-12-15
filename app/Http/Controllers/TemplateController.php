@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use App\Models\{ Contract, Template };
+use App\Models\{ Contract, ComponentTemplate, Template };
 use Illuminate\Http\Request;
 
 class TemplateController extends Controller
@@ -44,7 +44,15 @@ class TemplateController extends Controller
             "description" => strtoupper($request['description_template']),
             "isActive" => true
         ]);
-
+        $contracts = Contract::with('components')->where('id',$template->contract_id)->get();
+        foreach (($contracts[0]->components) as $component) {
+            $component_template = ComponentTemplate::create([
+                "template_id" => $template->id,
+                "component_id" => $component->id,
+                "content" => $component->content
+            ]);
+        }
+        //dd($component_template);
         return redirect()->route("templates.index", $template->id)->with("success", __("Contrato Creado"));
     }
 
