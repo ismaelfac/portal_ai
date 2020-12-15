@@ -28,7 +28,7 @@ class Template extends Model
 
     public function component_templates()
     {
-        return $this->belongsTo('App\Models\ComponentTemplate');
+        return $this->hasMany('App\Models\ComponentTemplate', 'template_id');
     }
 
 }

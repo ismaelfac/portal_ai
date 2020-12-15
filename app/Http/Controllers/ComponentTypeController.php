@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{ Contract, Template, ComponentTemplate };
+use App\Models\ComponentType;
 use Illuminate\Http\Request;
 
-class ComponentTemplateController extends Controller
+class ComponentTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class ComponentTemplateController extends Controller
      */
     public function index()
     {
-        //
+        $component_types = ComponentType::paginate(10);
+        return view('modules.component_type.index', compact('component_types'));
     }
 
     /**
@@ -22,15 +23,9 @@ class ComponentTemplateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getComponentTemplate($template_id){
-        $template = Template::with('component_templates')->where('id',$template_id)->get();//obtengo el template
-        //dd($template[0]->component_templates);
-        return $this->create($template);
-    }
-    public function create($template)
+    public function create()
     {
-        $contracts = [];
-        return view('modules.component_template.create', compact('template','contracts'));
+        //
     }
 
     /**
@@ -47,10 +42,10 @@ class ComponentTemplateController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ComponentTemplate  $componentTemplate
+     * @param  \App\Models\ComponentType  $componentType
      * @return \Illuminate\Http\Response
      */
-    public function show(ComponentTemplate $componentTemplate)
+    public function show(ComponentType $componentType)
     {
         //
     }
@@ -58,10 +53,10 @@ class ComponentTemplateController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ComponentTemplate  $componentTemplate
+     * @param  \App\Models\ComponentType  $componentType
      * @return \Illuminate\Http\Response
      */
-    public function edit(ComponentTemplate $componentTemplate)
+    public function edit(ComponentType $componentType)
     {
         //
     }
@@ -70,10 +65,10 @@ class ComponentTemplateController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ComponentTemplate  $componentTemplate
+     * @param  \App\Models\ComponentType  $componentType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ComponentTemplate $componentTemplate)
+    public function update(Request $request, ComponentType $componentType)
     {
         //
     }
@@ -81,10 +76,10 @@ class ComponentTemplateController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ComponentTemplate  $componentTemplate
+     * @param  \App\Models\ComponentType  $componentType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ComponentTemplate $componentTemplate)
+    public function destroy(ComponentType $componentType)
     {
         //
     }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Component;
+use App\Models\ {Component, ComponentType };
 use Illuminate\Http\Request;
 use Str;
 
@@ -26,7 +26,8 @@ class ComponentController extends Controller
      */
     public function create()
     {
-        return view('modules.component.create');
+        $component_types = ComponentType::all();
+        return view('modules.component.create', compact('component_types'));
     }
 
     /**

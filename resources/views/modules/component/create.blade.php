@@ -17,11 +17,24 @@
                     <form action="{{ route('components.store') }}" method="POST">
                         @csrf
                         <div class="row">
-                            <div class="input-group mb-3 col-md-12">
+                            <div class="input-group mb-3 col-md-6 col-sm-12">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Titulo del Componente</span>
                                 </div>
                                 <input type="text" name="title" id="title" class="form-control" placeholder="Titulo del contracto" aria-label="title_contract" aria-describedby="basic-addon1" />
+                            </div>
+                            <div class="input-group mb-3 col-md-6 col-sm-12">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Tipo de Componente</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01" name="contract_id">
+                                    <option selected value="0">Escoja la base del contrato</option>
+                                    @forelse ($component_types as $component_type)
+                                        <option value="{{ $component_type->id }}">{{ $component_type->title }}</option>
+                                    @empty
+                                        <option value="0">Sin Informacion</option>
+                                    @endforelse
+                                </select>
                             </div>
                             <div class="input-group mb-3 col-md-12">
                                 <div class="input-group-prepend">

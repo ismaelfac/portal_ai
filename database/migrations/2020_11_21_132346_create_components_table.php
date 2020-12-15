@@ -16,6 +16,7 @@ class CreateComponentsTable extends Migration
         Schema::create('components', function (Blueprint $table) {
             $table->id();
             $table->enum('componentType', ['ENCABEZADO', 'PARAGRAFO', 'FIRMAS'])->default('ENCABEZADO');
+            $table->foreignId('component_type_id')->references('id')->on('component_types')->onUpdate('cascade');
             $table->string('title');
             $table->mediumText('content');
             $table->boolean('isActive')->default(false);

@@ -17,20 +17,22 @@
                 @endforeach
             </div>
             <div class="card">
-                @forelse ($componentTemplate as $item)
-                    <div class="accordion" id="contract{{ $item->id }}">
+                @forelse ($template->component_templates as $component)
+                    <div class="accordion" id="contract{{ $component->component_id }}">
                         <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne{{ $item->id }}" aria-expanded="false" aria-controls="collapseOne{{ $item->id }}">
-                                {!! $item->title !!}
+                            <div class="btn-group group-sm" role="group" aria-label="Basic example">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne{{ $component->component_id }}" aria-expanded="true" aria-controls="collapseOne{{ $component->component_id }}">
+                                {!! $component->component_id !!}
                             </button>
+                            <button class="btn btn-outline-danger">Salvar</button>
+                                </div>
                             </h2>
                         </div>
-
-                        <div id="collapseOne{{ $item->id }}" class="collapse show" aria-labelledby="headingOne" data-parent="#contract{{ $item->id }}">
+                        <div id="collapseOne{{ $component->component_id }}" class="collapse" aria-labelledby="headingOne" data-parent="#contract{{ $component->component_id }}">
                             <div class="card-body">
-                                {!! $item->content !!}
+                                {!! $component->content !!}
                             </div>
                         </div>
                         </div>
