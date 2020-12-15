@@ -17,6 +17,7 @@ class CreateComponentTemplatesTable extends Migration
             $table->id();
             $table->foreignId('template_id')->references('id')->on('templates')->onUpdate('cascade');
             $table->foreignId('component_id')->references('id')->on('components');
+            $table->string('title_component');
             $table->mediumText('content');
             $table->timestamps();
             $table->softDeletes();

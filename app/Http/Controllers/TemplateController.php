@@ -49,6 +49,7 @@ class TemplateController extends Controller
             $component_template = ComponentTemplate::create([
                 "template_id" => $template->id,
                 "component_id" => $component->id,
+                "title" => $component->title,
                 "content" => $component->content
             ]);
         }

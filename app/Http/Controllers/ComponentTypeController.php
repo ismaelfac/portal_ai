@@ -36,7 +36,11 @@ class ComponentTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $component_types = ComponentType::create([
+            "title" => strtoupper($request['title']),
+            "slug" => str_slug($request['title']),
+        ]);
+        return redirect()->route("component_types.index", $component_types->id)->with("success", __("Tipo de Componente Creado"));
     }
 
     /**
