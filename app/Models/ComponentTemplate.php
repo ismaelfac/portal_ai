@@ -12,6 +12,7 @@ class ComponentTemplate extends Model
     protected $fillable = [
         'template_id',
         'component_id',
+        'title_component',
         'content',
     ];
 

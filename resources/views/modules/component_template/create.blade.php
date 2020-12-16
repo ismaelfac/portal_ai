@@ -24,7 +24,7 @@
                             <h2 class="mb-0">
                             <div class="btn-group group-sm" role="group" aria-label="Basic example">
                             <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne{{ $component->component_id }}" aria-expanded="true" aria-controls="collapseOne{{ $component->component_id }}">
-                                {!! $component->component_id !!}
+                                {!! $component->title_component !!}
                             </button>
                             <button class="btn btn-outline-danger">Salvar</button>
                                 </div>

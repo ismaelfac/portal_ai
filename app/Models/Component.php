@@ -10,7 +10,7 @@ class Component extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['component_type_id','title', 'content', 'isActive'];
+    protected $fillable = ['component_type_id','title', 'slug', 'content', 'isActive'];
 
     protected $casts = ['isActive' => 'boolean'];
 

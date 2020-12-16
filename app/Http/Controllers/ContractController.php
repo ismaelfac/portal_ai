@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Models\Contract;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,7 @@ class ContractController extends Controller
         $contract = Contract::create([
             "code" => 23445567,
             "title" => $request['title_contract'],
+            "slug" => Str::of($request['title_contract'])->slug('-'),
             "description" => $request['description_contract'],
             "isActive" => true
         ]);

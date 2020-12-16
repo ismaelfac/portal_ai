@@ -17,6 +17,7 @@ class CreateComponentsTable extends Migration
             $table->id();
             $table->foreignId('component_type_id')->references('id')->on('component_types')->onUpdate('cascade');
             $table->string('title');
+            $table->string('slug')->unique();
             $table->mediumText('content');
             $table->boolean('isActive')->default(false);
             $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('PUBLISHED');

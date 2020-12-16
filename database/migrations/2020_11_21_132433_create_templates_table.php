@@ -17,6 +17,7 @@ class CreateTemplatesTable extends Migration
             $table->id();
             $table->foreignId('contract_id')->references('id')->on('contracts')->onUpdate('cascade');
             $table->string('title');
+            $table->string('slug')->unique();
             $table->string('description');
             $table->boolean('isActive')->default(false);
             $table->timestamps();

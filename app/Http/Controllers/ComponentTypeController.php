@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Models\ComponentType;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,7 @@ class ComponentTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('modules.component_type.create');
     }
 
     /**
@@ -38,7 +39,7 @@ class ComponentTypeController extends Controller
     {
         $component_types = ComponentType::create([
             "title" => strtoupper($request['title']),
-            "slug" => str_slug($request['title']),
+            "slug" => Str::of($request['title'])->slug('-'),
         ]);
         return redirect()->route("component_types.index", $component_types->id)->with("success", __("Tipo de Componente Creado"));
     }

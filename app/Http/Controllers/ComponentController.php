@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Models\ {Component, ComponentType };
 use Illuminate\Http\Request;
-use Str;
 
 class ComponentController extends Controller
 {
@@ -41,6 +41,7 @@ class ComponentController extends Controller
         $component = Component::create([
             "component_type_id" => $request['component_type_id'],
             "title" => $request['title'],
+            "slug" => Str::of($request['title'])->slug('-'),
             "content" => $request['content'],
             "isActive" => true
         ]);

@@ -13,6 +13,7 @@ class Template extends Model
     protected $fillable = [
         'contract_id',
         'title',
+        'slug',
         'description',
         'isActive',
     ];

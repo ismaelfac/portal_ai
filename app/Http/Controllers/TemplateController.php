@@ -41,6 +41,7 @@ class TemplateController extends Controller
         $template = Template::create([
             "contract_id" => $request['contract_id'],
             "title" => strtoupper($request['title_template']),
+            "slug" => Str::of($request['title'])->slug('-'),
             "description" => strtoupper($request['description_template']),
             "isActive" => true
         ]);
@@ -49,7 +50,7 @@ class TemplateController extends Controller
             $component_template = ComponentTemplate::create([
                 "template_id" => $template->id,
                 "component_id" => $component->id,
-                "title" => $component->title,
+                "title_component" => $component->title,
                 "content" => $component->content
             ]);
         }
