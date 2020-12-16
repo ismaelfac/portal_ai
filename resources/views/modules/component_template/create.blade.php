@@ -13,7 +13,26 @@
             </nav>
             <div class="card mb-4">
                 @foreach ($template as $template)
-                    @include('modules.template.form_crud')
+                    <div class="row p-2">
+                        <div class="input-group mb-3 col-md-6 col-sm-12">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Contrato Base</label>
+                            </div>
+                            <p class="form-control">{{ $template->contract_id }}</p>
+                        </div>
+                        <div class="input-group mb-3 col-md-6 col-sm-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Titulo</span>
+                            </div>
+                            <p class="form-control">{{ $template->title }}</p>
+                        </div>
+                        <div class="input-group mb-3 col-md-12 col-sm-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Descripcion del contrato</span>
+                            </div>
+                            <p class="form-control">{{ $template->description }}</p>
+                        </div>
+                    </div>
                 @endforeach
             </div>
             <div class="card">
