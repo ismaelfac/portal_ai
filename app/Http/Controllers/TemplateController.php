@@ -30,6 +30,17 @@ class TemplateController extends Controller
         return view('modules.template.create', compact('contracts'));
     }
 
+    static function cadena($cadena)
+    {
+        $list = [];
+        $long = explode("||", $cadena);
+        for ($i=1, $size = count($long); $i < $size; ++$i) {
+            array_push($list, $long[$i]);
+            $i++;
+        }
+        return json_encode($list);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -45,17 +56,17 @@ class TemplateController extends Controller
             "description" => strtoupper($request['description_template']),
             "isActive" => true
         ]);
-        //dd('controller');
         $contracts = Contract::with('components')->where('id',$template->contract_id)->get();
         foreach (($contracts[0]->components) as $component) {
+            $parameters = $this->cadena($component->content);
             $component_template = ComponentTemplate::create([
                 "template_id" => $template->id,
                 "component_id" => $component->id,
                 "title_component" => $component->title,
+                "parameters" => $parameters,
                 "content" => $component->content
             ]);
         }
-        dd($component_template);
         return redirect()->route("templates.index", $template->id)->with("success", __("Contrato Creado"));
     }
 

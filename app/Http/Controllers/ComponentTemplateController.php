@@ -25,20 +25,8 @@ class ComponentTemplateController extends Controller
      */
     public function getComponentTemplate($slug){
         $template = Template::with('component_templates')->where('slug',$slug)->get();//obtengo el template
-        $content = $template[0]->component_templates[0]->content;
-        $parameters = $this->cadena($content);
+        dd($template);
         return $this->create($template);
-    }
-
-    static function cadena($cadena)
-    {
-        $list = [];
-        $long = explode("||", $cadena);
-        for ($i=1, $size = count($long); $i < $size; ++$i) {
-            array_push($list, $long[$i]);
-            $i++;
-        }
-        return json_encode($list);
     }
 
     public function create($template)

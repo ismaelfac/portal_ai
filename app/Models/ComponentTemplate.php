@@ -13,6 +13,7 @@ class ComponentTemplate extends Model
         'template_id',
         'component_id',
         'title_component',
+        'parameters',
         'content',
     ];
 
