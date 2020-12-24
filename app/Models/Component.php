@@ -10,7 +10,7 @@ class Component extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['title', 'content', 'isActive'];
+    protected $fillable = ['component_type_id','title', 'slug', 'content', 'isActive'];
 
     protected $casts = ['isActive' => 'boolean'];
 
@@ -26,5 +26,10 @@ class Component extends Model
     public function contracts()
     {
         return $this->belongsToMany('App\Models\Contract')->using('App\Models\ComponentContract');
+    }
+
+    public function component_types()
+    {
+        return $this->belongsTo('App\Models\ComponentType','component_type_id');
     }
 }

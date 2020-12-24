@@ -21,7 +21,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/contracts', App\Http\Controllers\ContractController::class);
-Route::resource('/templates', App\Http\Controllers\TemplateController::class);
+Route::resource('/templates', App\Http\Controllers\TemplateController::class)->scoped([
+    'templates' => 'slug',
+]);
 Route::resource('/components', App\Http\Controllers\ComponentController::class);
 Route::resource('/contract_components', App\Http\Controllers\ComponentContractController::class);
+Route::resource('/components_template', App\Http\Controllers\ComponentTemplateController::class);
+Route::resource('/component_types', App\Http\Controllers\ComponentTypeController::class);
+Route::get('/components_template_id/{slug}', [App\Http\Controllers\ComponentTemplateController::class, 'getComponentTemplate']);
 Route::get('/downloadpdf/{id}', [App\Http\Controllers\ContractController::class, 'downloadpdf'])->name('downloadpdf');

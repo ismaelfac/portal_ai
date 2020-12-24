@@ -9,6 +9,19 @@ class ComponentTemplate extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'template_id',
+        'component_id',
+        'title_component',
+        'parameters',
+        'content',
+    ];
+
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
+
     public function template()
     {
         return $this->belongsTo('App\Models\Template');

@@ -11,6 +11,7 @@ class Template extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'contract_id',
         'title',
         'description',
         'isActive',
@@ -20,6 +21,11 @@ class Template extends Model
         'isActive' => 'boolean',
     ];
 
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
+
     public function contract()
     {
         return $this->belongsTo('App\Models\Contract');
@@ -27,6 +33,7 @@ class Template extends Model
 
     public function component_templates()
     {
-        return $this->belongsTo('App\Models\ComponentTemplate');
+        return $this->hasMany('App\Models\ComponentTemplate', 'template_id');
     }
+
 }

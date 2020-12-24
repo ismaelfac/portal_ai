@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ComponentTemplate;
+use Illuminate\Support\Str;
+use App\Models\{ Contract, Template, ComponentTemplate };
 use Illuminate\Http\Request;
 
 class ComponentTemplateController extends Controller
@@ -22,9 +23,15 @@ class ComponentTemplateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getComponentTemplate($slug){
+        $template = Template::with('component_templates')->where('slug',$slug)->get();//obtengo el template
+        dd($template);
+        return $this->create($template);
+    }
+
+    public function create($template)
     {
-        //
+        return view('modules.component_template.create', compact('template'));
     }
 
     /**
@@ -33,7 +40,7 @@ class ComponentTemplateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $parameters)
     {
         //
     }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use App\Models\{ Contract, Template };
+use App\Models\{ Contract, ComponentTemplate, Template };
 use Illuminate\Http\Request;
 
 class TemplateController extends Controller
@@ -27,8 +27,18 @@ class TemplateController extends Controller
     public function create()
     {
         $contracts = Contract::select('id','title')->where('isActive', true)->get();
-        $contentTemplate = Contract::with('components')->where('id',1)->get();
-        return view('modules.template.create', compact('contracts','contentTemplate'));
+        return view('modules.template.create', compact('contracts'));
+    }
+
+    static function cadena($cadena)
+    {
+        $list = [];
+        $long = explode("||", $cadena);
+        for ($i=1, $size = count($long); $i < $size; ++$i) {
+            array_push($list, $long[$i]);
+            $i++;
+        }
+        return json_encode($list);
     }
 
     /**
@@ -41,10 +51,22 @@ class TemplateController extends Controller
     {
         $template = Template::create([
             "contract_id" => $request['contract_id'],
-            "title" => $request['title_template'],
-            "description" => $request['description_template'],
+            "title" => strtoupper($request['title_template']),
+            "slug" => Str::of($request['title'])->slug('-'),
+            "description" => strtoupper($request['description_template']),
             "isActive" => true
         ]);
+        $contracts = Contract::with('components')->where('id',$template->contract_id)->get();
+        foreach (($contracts[0]->components) as $component) {
+            $parameters = $this->cadena($component->content);
+            $component_template = ComponentTemplate::create([
+                "template_id" => $template->id,
+                "component_id" => $component->id,
+                "title_component" => $component->title,
+                "parameters" => $parameters,
+                "content" => $component->content
+            ]);
+        }
         return redirect()->route("templates.index", $template->id)->with("success", __("Contrato Creado"));
     }
 
@@ -67,7 +89,7 @@ class TemplateController extends Controller
      */
     public function edit(Template $template)
     {
-        //
+        dd('edit template');
     }
 
     /**

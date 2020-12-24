@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
-use App\Models\ {Component, ComponentType };
+use App\Models\ComponentType;
 use Illuminate\Http\Request;
 
-class ComponentController extends Controller
+class ComponentTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        $components = Component::paginate(10);
-        return view('modules.component.index', compact('components'));
+        $component_types = ComponentType::paginate(10);
+        return view('modules.component_type.index', compact('component_types'));
     }
 
     /**
@@ -26,8 +26,7 @@ class ComponentController extends Controller
      */
     public function create()
     {
-        $component_types = ComponentType::all();
-        return view('modules.component.create', compact('component_types'));
+        return view('modules.component_type.create');
     }
 
     /**
@@ -38,35 +37,31 @@ class ComponentController extends Controller
      */
     public function store(Request $request)
     {
-        $component = Component::create([
-            "component_type_id" => $request['component_type_id'],
-            "title" => $request['title'],
+        $component_types = ComponentType::create([
+            "title" => strtoupper($request['title']),
             "slug" => Str::of($request['title'])->slug('-'),
-            "content" => $request['content'],
-            "isActive" => true
         ]);
-        //dd($component);
-        return redirect()->route("components.index", $component->id)->with("success", __("Componente Creado"));
+        return redirect()->route("component_types.index", $component_types->id)->with("success", __("Tipo de Componente Creado"));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Component  $component
+     * @param  \App\Models\ComponentType  $componentType
      * @return \Illuminate\Http\Response
      */
-    public function show(Component $component)
+    public function show(ComponentType $componentType)
     {
-
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Component  $component
+     * @param  \App\Models\ComponentType  $componentType
      * @return \Illuminate\Http\Response
      */
-    public function edit(Component $component)
+    public function edit(ComponentType $componentType)
     {
         //
     }
@@ -75,10 +70,10 @@ class ComponentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Component  $component
+     * @param  \App\Models\ComponentType  $componentType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Component $component)
+    public function update(Request $request, ComponentType $componentType)
     {
         //
     }
@@ -86,10 +81,10 @@ class ComponentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Component  $component
+     * @param  \App\Models\ComponentType  $componentType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Component $component)
+    public function destroy(ComponentType $componentType)
     {
         //
     }

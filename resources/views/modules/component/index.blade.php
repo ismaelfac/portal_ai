@@ -32,7 +32,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <th colspan="3"><div><p>No existen datos</p></div></th>
+                                <th colspan="3"><p style="text-align: center">Sin componentes creados</p></th>
                             </tr>
                             @endforelse
                         </tbody>

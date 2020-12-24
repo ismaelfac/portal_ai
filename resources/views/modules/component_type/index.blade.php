@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Plantillas')
+@section('title','Tipos de Componentes')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -7,29 +7,25 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Plantilla</li>
+                  <li class="breadcrumb-item active" aria-current="page">Tipo de Componente</li>
                 </ol>
             </nav>
             <div class="card">
-                <div class="card-header">{{ __('Template') }}<span style="float: right;"><a href="{{ route("templates.create")}}" class="btn btn-outline-danger">{{ __("Generar Plantilla")}}</a></span></div>
+                <div class="card-header">{{ __('Tipos de Componente') }}<span style="float: right;"><a href="{{ route("component_types.create")}}" class="btn btn-outline-danger">{{ __("Crear Tipo de Componente")}}</a></span></div>
                 <table class="table table-hover table-sm">
                         <thead>
                             <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Contrato Base</th>
-                            <th scope="col">Plantilla</th>
+                            <th scope="col">Tipo</th>
                             <th scope="col">Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <div hidden>{{ $i=1 }}</div>
-                            @forelse ($templates as $template)
+                            @forelse ($component_types as $component_type)
                             <tr>
-                                <th scope="row">{{ $i++ }}</th>
-                                <td>{{ $template->contract->title }}</td>
-                                <td>{!! $template->title !!}</td>
-                                <td><a href="{{ url("templates.edit", [$template->slug ])}}" class="btn btn-outline-danger btn-sm">Editar</a></td>
-                                <td><a href="{{ url("components_template_id/{$template->slug}") }}" class="btn btn-outline-danger btn-sm">Sin Diligenciar</a></td>
+                                <th scope="row">{{ $component_type->id }}</th>
+                                <td>{{ $component_type->title }}</td>
+                                <td><a href="{{ route("component_types.edit", ["component_type" => $component_type->id ])}}" class="btn btn-outline-danger btn-sm">Editar</a></td>
                             </tr>
                             @empty
                             <tr>
@@ -38,7 +34,7 @@
                             @endforelse
                         </tbody>
                     </table>
-                    {{ $templates->links() }}
+                    {{ $component_types->links() }}
                 </div>
             </div>
         </div>

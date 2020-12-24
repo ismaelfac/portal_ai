@@ -15,11 +15,12 @@ class CreateComponentsTable extends Migration
     {
         Schema::create('components', function (Blueprint $table) {
             $table->id();
-            $table->enum('componentType', ['ENCABEZADO', 'PARAGRAFO', 'FIRMAS'])->default('ENCABEZADO');
-            $table->string('title');
+            $table->foreignId('component_type_id')->references('id')->on('component_types')->onUpdate('cascade');
+            $table->string('title')->unique();
+            $table->string('slug')->unique();
             $table->mediumText('content');
             $table->boolean('isActive')->default(false);
-            $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
+            $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('PUBLISHED');
             $table->timestamps();
             $table->softDeletes();
         });

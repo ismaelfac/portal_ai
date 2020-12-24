@@ -11,8 +11,8 @@ class Contract extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'code',
         'title',
+        'slug',
         'description',
         'isActive',
     ];
