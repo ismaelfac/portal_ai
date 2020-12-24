@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Models\{ Contract, Template, ComponentTemplate };
 use Illuminate\Http\Request;
 
@@ -22,15 +23,27 @@ class ComponentTemplateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getComponentTemplate($template_id){
-        $template = Template::with('component_templates')->where('id',$template_id)->get();//obtengo el template
-        //dd($template[0]->component_templates);
+    public function getComponentTemplate($slug){
+        $template = Template::with('component_templates')->where('slug',$slug)->get();//obtengo el template
+        $content = $template[0]->component_templates[0]->content;
+        $parameters = $this->cadena($content);
         return $this->create($template);
     }
+
+    static function cadena($cadena)
+    {
+        $list = [];
+        $long = explode("||", $cadena);
+        for ($i=1, $size = count($long); $i < $size; ++$i) {
+            array_push($list, $long[$i]);
+            $i++;
+        }
+        return json_encode($list);
+    }
+
     public function create($template)
     {
-        $contracts = [];
-        return view('modules.component_template.create', compact('template','contracts'));
+        return view('modules.component_template.create', compact('template'));
     }
 
     /**
@@ -39,7 +52,7 @@ class ComponentTemplateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $parameters)
     {
         //
     }

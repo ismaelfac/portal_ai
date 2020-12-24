@@ -22,13 +22,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <div hidden>{{ $i=1 }}</div>
                             @forelse ($templates as $template)
                             <tr>
-                                <th scope="row">{{ $template->id }}</th>
+                                <th scope="row">{{ $i++ }}</th>
                                 <td>{{ $template->contract->title }}</td>
-                                <td>{!! $template->description !!}</td>
-                                <td><a href="{{ route("templates.edit", ["template" => $template->id ])}}" class="btn btn-outline-danger btn-sm">Editar</a></td>
-                                <td><a href="{{ url("components_template_id/{$template->id}") }}" class="btn btn-outline-danger btn-sm">Sin Diligenciar</a></td>
+                                <td>{!! $template->title !!}</td>
+                                <td><a href="{{ url("templates.edit", [$template->slug ])}}" class="btn btn-outline-danger btn-sm">Editar</a></td>
+                                <td><a href="{{ url("components_template_id/{$template->slug}") }}" class="btn btn-outline-danger btn-sm">Sin Diligenciar</a></td>
                             </tr>
                             @empty
                             <tr>

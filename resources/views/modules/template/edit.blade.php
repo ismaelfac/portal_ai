@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Crear Plantilla')
+@section('title','Editar Plantilla')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -15,7 +15,7 @@
                 <div class="card-header">{{ __('Plantilla') }}</div>
                 <div id="contract" class="card-body">
                     <form action="{{ route('templates.store') }}" method="POST">
-                        @include('modules.template.form_crud')
+                        {{ $template->title }}
                         <div class="input-group mb-3 col-md-12">
                             <button type="submit" class="btn btn-outline-danger">Crear Plantilla</button>
                         </div>

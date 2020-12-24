@@ -16,6 +16,11 @@ class ComponentTemplate extends Model
         'content',
     ];
 
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
+
     public function template()
     {
         return $this->belongsTo('App\Models\Template');

@@ -45,6 +45,7 @@ class TemplateController extends Controller
             "description" => strtoupper($request['description_template']),
             "isActive" => true
         ]);
+        //dd('controller');
         $contracts = Contract::with('components')->where('id',$template->contract_id)->get();
         foreach (($contracts[0]->components) as $component) {
             $component_template = ComponentTemplate::create([
@@ -54,7 +55,7 @@ class TemplateController extends Controller
                 "content" => $component->content
             ]);
         }
-        //dd($component_template);
+        dd($component_template);
         return redirect()->route("templates.index", $template->id)->with("success", __("Contrato Creado"));
     }
 
@@ -77,7 +78,7 @@ class TemplateController extends Controller
      */
     public function edit(Template $template)
     {
-        //
+        dd('edit template');
     }
 
     /**

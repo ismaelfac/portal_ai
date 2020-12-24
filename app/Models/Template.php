@@ -13,7 +13,6 @@ class Template extends Model
     protected $fillable = [
         'contract_id',
         'title',
-        'slug',
         'description',
         'isActive',
     ];
@@ -21,6 +20,11 @@ class Template extends Model
     protected $casts = [
         'isActive' => 'boolean',
     ];
+
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
 
     public function contract()
     {
