@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\ComponentContract;
 use App\Models\Component;
 use Illuminate\Http\Request;
+use App\Repository\ComponentRepository;
 
 class ComponentContractController extends Controller
 {
+    private $ComponentRepository;
+
+    public function __construct(ComponentRepository $componentRepository)
+    {
+        $this->ComponentRepository = $componentRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class ComponentContractController extends Controller
      */
     public function index()
     {
-        $components = Component::select('id', 'title', 'content')->where('isActive',true)->paginate(10);
+        $components = $this->ComponentRepository->getAll();
         return view('modules.component_contract.index', compact('components'));
     }
 
