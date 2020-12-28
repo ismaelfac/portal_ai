@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use App\Http\Requests\Api\TemplateRequest;
 use App\Models\{ Contract, ComponentTemplate, Template };
-use Illuminate\Http\Request;
 
 class TemplateController extends Controller
 {
@@ -44,16 +44,16 @@ class TemplateController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Api  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TemplateRequest $request)
     {
         $template = Template::create([
             "contract_id" => $request['contract_id'],
-            "title" => strtoupper($request['title_template']),
+            "title" => strtoupper($request['title']),
             "slug" => Str::of($request['title'])->slug('-'),
-            "description" => strtoupper($request['description_template']),
+            "description" => strtoupper($request['description']),
             "isActive" => true
         ]);
         $contracts = Contract::with('components')->where('id',$template->contract_id)->get();
