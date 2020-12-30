@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ComponentContract;
 use App\Models\Component;
 use Illuminate\Http\Request;
-use App\Repository\ComponentRepository;
+use App\Repositories\ComponentRepository;
 
 class ComponentContractController extends Controller
 {

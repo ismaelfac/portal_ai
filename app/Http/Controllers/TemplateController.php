@@ -57,7 +57,7 @@ class TemplateController extends Controller
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function show(Template $template)
+    public function show($template)
     {
         //
     }
@@ -68,9 +68,9 @@ class TemplateController extends Controller
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function edit(Template $template)
+    public function edit($template)
     {
-        dd('edit template');
+        dd($template);
     }
 
     /**
@@ -80,7 +80,7 @@ class TemplateController extends Controller
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Template $template)
+    public function update(TemplateRequest $request, $template)
     {
         //
     }
@@ -91,7 +91,7 @@ class TemplateController extends Controller
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Template $template)
+    public function destroy($template)
     {
         //
     }

@@ -30,4 +30,9 @@ class Contract extends Model
     {
         return $this->hasMany('App\Models\Template','contract_id');
     }
+
+    static public function getContractWithComponents($contract)
+    {
+        return Contract::query()->with('components')->where('id',$contract)->get();
+    }
 }

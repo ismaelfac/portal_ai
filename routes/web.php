@@ -21,9 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/contracts', App\Http\Controllers\ContractController::class);
-Route::resource('/templates', App\Http\Controllers\TemplateController::class)->scoped([
-    'templates' => 'slug',
-]);
+Route::resource('/templates', App\Http\Controllers\TemplateController::class);
 Route::resource('/components', App\Http\Controllers\ComponentController::class);
 Route::resource('/contract_components', App\Http\Controllers\ComponentContractController::class);
 Route::resource('/components_template', App\Http\Controllers\ComponentTemplateController::class);
