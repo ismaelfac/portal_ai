@@ -16,7 +16,7 @@ class TemplateRepository extends ContractRepository
     public function createdTemplate($template)
     {
         $template = $this->created($template);
-        $contracts = Contract::getContractWithComponents($template->id);
+        $contracts = Contract::getContractWithComponentsAttribute($template->id);
         dd($contracts);
         //$contracts = Contract::with('components')->where('id',$template->contract_id)->get();
         foreach (($contracts[0]->components) as $component) {

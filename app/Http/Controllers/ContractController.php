@@ -26,7 +26,8 @@ class ContractController extends Controller
      */
     public function create()
     {
-        return view('modules.contract.create');
+        $components = \App\Models\Component::where('isActive',true)->get();
+        return view('modules.contract.create',compact('components'));
     }
 
     /**
