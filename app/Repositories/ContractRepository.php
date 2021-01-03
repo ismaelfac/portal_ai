@@ -12,9 +12,6 @@ class ContractRepository extends ComponentRepository
         return new Contract();
     }
 
-    public function findContract()
-    {
 
-    }
 
 }

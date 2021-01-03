@@ -12,5 +12,8 @@ class ComponentRepository extends BaseRepository
         return new Component();
     }
 
-
+    public function getComponentWithComponentsType()
+    {
+        return Component::getComponentsWithComponentsType();
+    }
 }
