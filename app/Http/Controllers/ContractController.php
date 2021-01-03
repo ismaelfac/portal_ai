@@ -33,7 +33,8 @@ class ContractController extends Controller
     public function create()
     {
         $components = $this->ContractRepository->getComponents();
-        return view('modules.contract.create',compact('components'));
+        $componentTypes = $this->ContractRepository->getComponentsType();
+        return view('modules.contract.create',compact('components','componentTypes'));
     }
 
     /**

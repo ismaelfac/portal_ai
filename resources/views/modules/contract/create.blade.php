@@ -29,15 +29,15 @@
                                 </div>
                                 <input type="text" name="description_contract" class="form-control" placeholder="Titulo del contracto" aria-label="description_contract" aria-describedby="basic-addon1" />
                             </div>
-                            @forelse ($components as $component)
+                            @forelse ($componentTypes as $componentType)
                                 <div class="accordion accordion-flush" id="accordionFlushExample">
                                     <div class="accordion-item">
                                     <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                            
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ $componentType->id }}" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            {{ $componentType->title}}
                                         </button>
                                     </h2>
-                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div id="flush-collapse{{ $componentType->id }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ $componentType->id }}" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
                                             @include('modules.contract.componentsList')
                                         </div>
