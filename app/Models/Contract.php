@@ -21,6 +21,7 @@ class Contract extends Model
         'isActive' => 'boolean',
     ];
 
+    // relations
     public function components()
     {
         return $this->belongsToMany('App\Models\Component')->using('App\Models\ComponentContract');
@@ -30,4 +31,14 @@ class Contract extends Model
     {
         return $this->hasMany('App\Models\Template','contract_id');
     }
+
+    // getters -presenters
+
+
+    //validations
+
+
+    //queries - repositories
+
+    //application logic
 }

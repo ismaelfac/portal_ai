@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use App\Models\{ Contract, ComponentTemplate, Template };
-use Illuminate\Http\Request;
+use App\Http\Requests\Api\TemplateRequest;
+use App\Repositories\TemplateRepository;
 
 class TemplateController extends Controller
 {
+
+    private $TemplateRepository;
+
+    public function __construct(TemplateRepository $templateRepository)
+    {
+        $this->TemplateRepository = $templateRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        $templates = Template::with('contract')->where('isActive',true)->paginate();
+        $templates = $this->TemplateRepository->getAll('contract');
         return view('modules.template.index', compact('templates'));
     }
 
@@ -26,48 +33,22 @@ class TemplateController extends Controller
      */
     public function create()
     {
-        $contracts = Contract::select('id','title')->where('isActive', true)->get();
+        $contracts = \App\Models\Contract::select('id','title')->where('isActive', true)->get();
         return view('modules.template.create', compact('contracts'));
     }
 
-    static function cadena($cadena)
-    {
-        $list = [];
-        $long = explode("||", $cadena);
-        for ($i=1, $size = count($long); $i < $size; ++$i) {
-            array_push($list, $long[$i]);
-            $i++;
-        }
-        return json_encode($list);
-    }
+
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Api  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TemplateRequest $request)
     {
-        $template = Template::create([
-            "contract_id" => $request['contract_id'],
-            "title" => strtoupper($request['title_template']),
-            "slug" => Str::of($request['title'])->slug('-'),
-            "description" => strtoupper($request['description_template']),
-            "isActive" => true
-        ]);
-        $contracts = Contract::with('components')->where('id',$template->contract_id)->get();
-        foreach (($contracts[0]->components) as $component) {
-            $parameters = $this->cadena($component->content);
-            $component_template = ComponentTemplate::create([
-                "template_id" => $template->id,
-                "component_id" => $component->id,
-                "title_component" => $component->title,
-                "parameters" => $parameters,
-                "content" => $component->content
-            ]);
-        }
-        return redirect()->route("templates.index", $template->id)->with("success", __("Contrato Creado"));
+        $this->TemplateRepository->createdTemplate($request->all());
+        return redirect()->route("templates.index")->with("success", __("Contrato Creado"));
     }
 
     /**
@@ -76,7 +57,7 @@ class TemplateController extends Controller
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function show(Template $template)
+    public function show($template)
     {
         //
     }
@@ -87,9 +68,9 @@ class TemplateController extends Controller
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function edit(Template $template)
+    public function edit($template)
     {
-        dd('edit template');
+        dd($template);
     }
 
     /**
@@ -99,7 +80,7 @@ class TemplateController extends Controller
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Template $template)
+    public function update(TemplateRequest $request, $template)
     {
         //
     }
@@ -110,7 +91,7 @@ class TemplateController extends Controller
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Template $template)
+    public function destroy($template)
     {
         //
     }

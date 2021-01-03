@@ -28,7 +28,7 @@
                                 <th scope="row">{{ $i++ }}</th>
                                 <td>{{ $template->contract->title }}</td>
                                 <td>{!! $template->title !!}</td>
-                                <td><a href="{{ url("templates.edit", [$template->slug ])}}" class="btn btn-outline-danger btn-sm">Editar</a></td>
+                                <td><a href="{{ url("templates/{$template->slug}/edit")}}" class="btn btn-outline-danger btn-sm">Editar</a></td>
                                 <td><a href="{{ url("components_template_id/{$template->slug}") }}" class="btn btn-outline-danger btn-sm">Sin Diligenciar</a></td>
                             </tr>
                             @empty

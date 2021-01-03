@@ -9,7 +9,11 @@ class TemplateObserver
 {
     public function saving(Template $template)
     {
+        $title = $template->title;
         $slug = Str::slug($template->title, '-');
+        $description = $template->description;
+        $template->title = strtoupper($title);
+        $template->description = strtoupper($description);
         $template->slug = strtolower($slug);
     }
     /**

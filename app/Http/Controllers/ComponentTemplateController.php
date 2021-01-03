@@ -25,7 +25,6 @@ class ComponentTemplateController extends Controller
      */
     public function getComponentTemplate($slug){
         $template = Template::with('component_templates')->where('slug',$slug)->get();//obtengo el template
-        dd($template);
         return $this->create($template);
     }
 

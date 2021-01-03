@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use App\Models\ {Component, ComponentType };
 use Illuminate\Http\Request;
+use App\Repositories\ComponentRepository;
 
 class ComponentController extends Controller
 {
+    private $ComponentRepository;
+
+    public function __construct(ComponentRepository $componentRepository)
+    {
+        $this->ComponentRepository = $componentRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        $components = Component::paginate(10);
+        $components = $this->ComponentRepository->getAll('');
         return view('modules.component.index', compact('components'));
     }
 

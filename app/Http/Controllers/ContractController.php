@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
-use App\Models\Contract;
-use Illuminate\Http\Request;
+use App\Http\Requests\Api\ContractRequest;
+use App\Repositories\ContractRepository;
 
 class ContractController extends Controller
 {
+    private $ContractRepository;
+
+    public function __construct(ContractRepository $contractRepository)
+    {
+        $this->ContractRepository = $contractRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,7 @@ class ContractController extends Controller
      */
     public function index()
     {
-        $contracts = Contract::with('components')->paginate(10);
+        $contracts = $this->ContractRepository->getAll();
         return view('modules.contract.index', compact('contracts'));
     }
 
@@ -26,7 +32,9 @@ class ContractController extends Controller
      */
     public function create()
     {
-        return view('modules.contract.create');
+        $components = $this->ContractRepository->getComponents();
+        $componentTypes = $this->ContractRepository->getComponentsType();
+        return view('modules.contract.create',compact('components','componentTypes'));
     }
 
     /**
@@ -35,16 +43,10 @@ class ContractController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContractRequest $request)
     {
-        $contract = Contract::create([
-            "code" => 23445567,
-            "title" => $request['title_contract'],
-            "slug" => Str::of($request['title_contract'])->slug('-'),
-            "description" => $request['description_contract'],
-            "isActive" => true
-        ]);
-        return redirect()->route("contracts.index", $contract->id)->with("success", __("Contrato Creado"));
+        $contract = $this->ContractRepository->created($request);
+        return redirect()->route("contracts.index")->with("success", __("Contrato Creado"));
     }
 
     /**
@@ -53,7 +55,7 @@ class ContractController extends Controller
      * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function show(Contract $contract)
+    public function show($contract)
     {
         //
     }
@@ -64,7 +66,7 @@ class ContractController extends Controller
      * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contract $contract)
+    public function edit($contract)
     {
         //
     }
@@ -76,7 +78,7 @@ class ContractController extends Controller
      * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contract $contract)
+    public function update(ContractRequest $request, $contract)
     {
         //
     }
@@ -87,7 +89,7 @@ class ContractController extends Controller
      * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contract $contract)
+    public function destroy($contract)
     {
         //
     }

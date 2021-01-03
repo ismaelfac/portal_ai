@@ -12,6 +12,15 @@
                 </ol>
             </nav>
             <div class="card">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="card-header">{{ __('Plantilla') }}</div>
                 <div id="contract" class="card-body">
                     <form action="{{ route('templates.store') }}" method="POST">
