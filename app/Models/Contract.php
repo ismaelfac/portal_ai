@@ -33,10 +33,7 @@ class Contract extends Model
     }
 
     // getters -presenters
-    static public function getContractWithComponentsAttribute($contractId)
-    {
-        return Contract::with('components')->where('id',$contractId)->pagintate(5);
-    }
+
 
     //validations
 

@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Repositories\BaseRepository;
+use App\Repositories\ComponentsTypeRepository;
 use App\Models\{ Component };
 
-class ComponentRepository extends BaseRepository
+class ComponentRepository extends ComponentsTypeRepository
 {
     public function getModel()
     {
@@ -15,5 +15,6 @@ class ComponentRepository extends BaseRepository
     public function getComponentWithComponentsType()
     {
         return Component::getComponentsWithComponentsType();
+        //Encabezado - Paragrafo - Pie de Pagina
     }
 }

@@ -35,6 +35,6 @@ class Component extends Model
 
     static public function getComponentsWithComponentsType()
     {
-        return Component::with('component_types')->where('isActive',true)->get();
+        return Component::with('component_types')->where('isActive',true)->where('status', 'PUBLISHED')->get();
     }
 }
