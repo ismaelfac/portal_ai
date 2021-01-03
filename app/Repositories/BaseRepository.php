@@ -12,9 +12,9 @@ abstract class BaseRepository
         return $this->getModel()->find($id);
     }
 
-    public function getAll($relations = NULL)
+    public function getAll(string $relations = NULL)
     {
-        return $this->getModel()->with($relations)->where('isActive',true)->paginate();
+        return $this->getModel()->where('isActive',true)->paginate();
     }
 
     public function created($data)

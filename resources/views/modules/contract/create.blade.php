@@ -38,35 +38,7 @@
                                   </h2>
                                   <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                        <ul class="list-group">
-                                            @forelse ($components as $component)
-                                                <li class="list-group-item">
-                                                    <a href="#" class="list-group-item list-group-item-action">
-                                                        <div class="d-flex w-100 justify-content-between">
-                                                          <h5 class="mb-1">{{ $component->title}}</h5>
-                                                          <small>
-                                                            <div class="btn-group btn-group-sm" role="group">
-                                                                <button class="btn btn-outline-danger">Aplicar</button>
-                                                                    <div class="input-group-prepend">
-                                                                      <label class="input-group-text" for="inputGroupSelect01">Orden</label>
-                                                                    </div>
-                                                                    <select class="custom-select" id="inputGroupSelect01">
-                                                                      <option selected>0</option>
-                                                                      <option value="1">1</option>
-                                                                      <option value="2">2</option>
-                                                                      <option value="3">3</option>
-                                                                    </select>
-                                                                  </div>
-                                                          </small>
-                                                        </div>
-                                                        <p class="mb-1">{{ $component->content }}</p>
-                                                        <small>Donec id elit non mi porta.</small>
-                                                    </a>
-                                                </li>
-                                            @empty
-                                            <li class="list-group-item">Sin Componentes para asignar</li>
-                                            @endforelse
-                                        </ul>
+                                        @include('modules.contract.componentsList')
                                     </div>
                                   </div>
                                 </div>
@@ -78,35 +50,7 @@
                                   </h2>
                                   <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                        <ul class="list-group">
-                                            @forelse ($components as $component)
-                                                <li class="list-group-item">
-                                                    <a href="#" class="list-group-item list-group-item-action">
-                                                        <div class="d-flex w-100 justify-content-between">
-                                                          <h5 class="mb-1">{{ $component->title}}</h5>
-                                                          <small>
-                                                            <div class="btn-group btn-group-sm" role="group">
-                                                                <button class="btn btn-outline-danger">Aplicar</button>
-                                                                    <div class="input-group-prepend">
-                                                                      <label class="input-group-text" for="inputGroupSelect01">Orden</label>
-                                                                    </div>
-                                                                    <select class="custom-select" id="inputGroupSelect01">
-                                                                      <option selected>0</option>
-                                                                      <option value="1">1</option>
-                                                                      <option value="2">2</option>
-                                                                      <option value="3">3</option>
-                                                                    </select>
-                                                                  </div>
-                                                          </small>
-                                                        </div>
-                                                        <p class="mb-1">{{ $component->content }}</p>
-                                                        <small>Donec id elit non mi porta.</small>
-                                                    </a>
-                                                </li>
-                                            @empty
-                                            <li class="list-group-item">Sin Componentes para asignar</li>
-                                            @endforelse
-                                        </ul>
+                                        @include('modules.contract.componentsList')
                                     </div>
                                   </div>
                                 </div>
@@ -118,37 +62,7 @@
                                   </h2>
                                   <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                        <ul class="list-group list-group-flush">
-                                            <div hidden>{{ $i = 1 }}</div>
-                                            @forelse ($components as $component)
-                                                <div hidden>{{ $i++ }}</div>
-                                                <li class="list-group-item">
-                                                    <a href="#" class="list-group-item list-group-item-action">
-                                                        <div class="d-flex w-100 justify-content-between">
-                                                          <h5 class="mb-1">{{ $component->title}}</h5>
-                                                          <small>
-                                                            <div class="btn-group btn-group-sm" role="group">
-                                                                <button class="btn btn-outline-danger" id="btn_send_component_{{ $i }}" name="btn_send_component_{{$i }}">Aplicar</button>
-                                                                    <div class="input-group-prepend">
-                                                                      <label class="input-group-text" for="inputGroupSelect01">Orden</label>
-                                                                    </div>
-                                                                    <select class="custom-select" id="inputGroupSelect01">
-                                                                      <option selected>0</option>
-                                                                      <option value="1">1</option>
-                                                                      <option value="2">2</option>
-                                                                      <option value="3">3</option>
-                                                                    </select>
-                                                                  </div>
-                                                          </small>
-                                                        </div>
-                                                        <p class="mb-1">{{ $component->content }}</p>
-                                                        <small>Precione el boton aplicar y seleccione el orden dentro del documento</small>
-                                                    </a>
-                                                </li>
-                                            @empty
-                                            <li class="list-group-item">Sin Componentes para asignar</li>
-                                            @endforelse
-                                        </ul>
+                                        @include('modules.contract.componentsList')
                                     </div>
                                   </div>
                                 </div>
