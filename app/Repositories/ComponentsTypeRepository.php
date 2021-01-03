@@ -12,6 +12,11 @@ class ComponentsTypeRepository extends BaseRepository
         return new Component();
     }
 
+    public function getCountComponentsType()
+    {
+        return ComponentType::select('id','title')->get();
+    }
+
     public function getRulesComponentsType(string $componentType): void
     {
         switch ($componentType) {

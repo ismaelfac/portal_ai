@@ -14,7 +14,13 @@ class ComponentRepository extends ComponentsTypeRepository
 
     public function getComponentWithComponentsType()
     {
-        return Component::getComponentsWithComponentsType();
+        $components =  Component::getComponentsWithComponentsType();
+        $countComponentsType = $components->component_types->count();
+        dd($countComponentsType);
+        $componentsType = $components->each(function ($item, $key) {
+            dd($item->component_types->title);
+        });
+
         //Encabezado - Paragrafo - Pie de Pagina
     }
 }
