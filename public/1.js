@@ -15,36 +15,16 @@ __webpack_require__.r(__webpack_exports__);
 
 function Page(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
+    className: "list-group list-group-flush"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group mb-3 col-md-12"
+    className: "list-group-item list-group-item-action"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group-prepend"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "input-group-text",
-    id: "basic-addon1"
-  }, "Titulo")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text",
-    name: "title_contract",
-    className: "form-control",
-    placeholder: "Titulo del contracto",
-    "aria-label": "title_contract",
-    "aria-describedby": "basic-addon1"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group mb-3 col-md-12"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group-prepend"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "input-group-text",
-    id: "basic-addon1"
-  }, "Descripcion del contrato")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text",
-    name: "title_contract",
-    className: "form-control",
-    placeholder: "Titulo del contracto",
-    "aria-label": "title_contract",
-    "aria-describedby": "basic-addon1"
-  })));
+    className: "d-flex w-100 justify-content-between"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    className: "mb-1"
+  }, componentType), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "3 days ago")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "mb-1"
+  }, "Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "Donec id elit non mi porta.")));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Page);

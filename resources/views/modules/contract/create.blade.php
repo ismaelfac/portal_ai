@@ -39,7 +39,7 @@
                                         </h2>
                                         <div id="flush-collapse{{ $componentType->id }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ $componentType->id }}" data-bs-parent="#accordionFlush{{ $componentType->id }}">
                                             <div class="accordion-body">
-                                                @include('modules.contract.componentsList')
+                                                @include('modules.contract.formListComponent')
                                             </div>
                                         </div>
                                     </div>
