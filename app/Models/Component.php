@@ -33,7 +33,7 @@ class Component extends Model
         return $this->belongsTo('App\Models\ComponentType','component_type_id');
     }
 
-    static public function getComponentsWithComponentsType()
+    static public function getComponentsActivesAndPublishedWithComponentsType()
     {
         return Component::with('component_types')->where('isActive',true)->where('status', 'PUBLISHED')->get();
     }

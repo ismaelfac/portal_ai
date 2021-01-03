@@ -12,15 +12,9 @@ class ComponentRepository extends ComponentsTypeRepository
         return new Component();
     }
 
-    public function getComponentWithComponentsType()
+    public function getComponents()
     {
-        $components =  Component::getComponentsWithComponentsType();
-        $countComponentsType = $components->component_types->count();
-        dd($countComponentsType);
-        $componentsType = $components->each(function ($item, $key) {
-            dd($item->component_types->title);
-        });
-
-        //Encabezado - Paragrafo - Pie de Pagina
+        //** { components : { id: 1, title: 'titleComponent} componentTypes: { id: 1, title:'CategoryTitleType'} }*//
+        return Component::getComponentsActivesAndPublishedWithComponentsType();
     }
 }

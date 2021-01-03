@@ -12,7 +12,7 @@ class ComponentsTypeRepository extends BaseRepository
         return new Component();
     }
 
-    public function getCountComponentsType()
+    public function getComponentsType()
     {
         return ComponentType::select('id','title')->get();
     }
