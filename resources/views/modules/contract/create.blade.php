@@ -30,22 +30,22 @@
                                 <input type="text" name="description_contract" class="form-control" placeholder="Titulo del contracto" aria-label="description_contract" aria-describedby="basic-addon1" />
                             </div>
                             @forelse ($componentTypes as $componentType)
-                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion accordion-flush" id="accordionFlush{{ $componentType->id }}">
                                     <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ $componentType->id }}" aria-expanded="false" aria-controls="flush-collapseOne">
-                                            {{ $componentType->title}}
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapse{{ $componentType->id }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ $componentType->id }}" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">
-                                            @include('modules.contract.componentsList')
+                                        <h2 class="accordion-header" id="flush-heading{{ $componentType->id }}">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ $componentType->id }}" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                {{ $componentType->title}}
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapse{{ $componentType->id }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ $componentType->id }}" data-bs-parent="#accordionFlush{{ $componentType->id }}">
+                                            <div class="accordion-body">
+                                                @include('modules.contract.componentsList')
+                                            </div>
                                         </div>
-                                    </div>
                                     </div>
                                 </div>
                             @empty
-                                <h2>Sin Componentes Disponibles</h2>
+                                <h2>Sin Componentes Disponibles o posibles problemas de conexión</h2>
                             @endforelse
 
                             <div class="input-group mb-3 col-md-12">

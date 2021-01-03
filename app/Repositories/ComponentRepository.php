@@ -14,7 +14,6 @@ class ComponentRepository extends ComponentsTypeRepository
 
     public function getComponents()
     {
-        //** { components : { id: 1, title: 'titleComponent} componentTypes: { id: 1, title:'CategoryTitleType'} }*//
         return Component::getComponentsActivesAndPublishedWithComponentsType();
     }
 }

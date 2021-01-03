@@ -12,6 +12,9 @@ class ContractRepository extends ComponentRepository
         return new Contract();
     }
 
-
+    public function created($data)
+    {
+        $contractNew = $this->created($data);
+    }
 
 }
