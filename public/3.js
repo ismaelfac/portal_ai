@@ -15,36 +15,16 @@ __webpack_require__.r(__webpack_exports__);
 
 function Page(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
+    className: "list-group list-group-flush"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group mb-3 col-md-12"
+    className: "list-group-item list-group-item-action"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group-prepend"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "input-group-text",
-    id: "basic-addon1"
-  }, "Titulo")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text",
-    name: "title_contract",
-    className: "form-control",
-    placeholder: "Titulo del contracto",
-    "aria-label": "title_contract",
-    "aria-describedby": "basic-addon1"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group mb-3 col-md-12"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group-prepend"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "input-group-text",
-    id: "basic-addon1"
-  }, "Descripcion del contrato")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text",
-    name: "title_contract",
-    className: "form-control",
-    placeholder: "Titulo del contracto",
-    "aria-label": "title_contract",
-    "aria-describedby": "basic-addon1"
-  })));
+    className: "d-flex w-100 justify-content-between"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    className: "mb-1"
+  }, "title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "3 days ago")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "mb-1"
+  }, "Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "Donec id elit non mi porta.")));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Page);
@@ -105,7 +85,13 @@ var Contract = /*#__PURE__*/function (_Component) {
   _createClass(Contract, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Page__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+      var components = this.props.components;
+      var componentTypes = this.props.componentTypes;
+      console.log(components);
+      console.log(componentTypes);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Page__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        components: components
+      });
     }
   }]);
 
@@ -113,51 +99,17 @@ var Contract = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Contract);
+var elements = document.querySelectorAll('#contract_viewport');
 
-if (document.getElementById('contract_viewport')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(Contract, document.getElementById('contract_viewport'));
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Example.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Example.js ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-
-
-
-
-
-function Dashboard() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row justify-content-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-12"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card-header"
-  }, "Example Component"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card-body"
-  })))));
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Dashboard);
-
-if (document.getElementById('root')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Dashboard, null), document.getElementById('root'));
+if (elements.length > 0) {
+  elements.forEach(function (element) {
+    var components = element.getAttribute('data-components');
+    var componentTypes = element.getAttribute('data-componentType');
+    react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Contract, {
+      components: components,
+      componentTypes: componentTypes
+    }), element);
+  });
 }
 
 /***/ })

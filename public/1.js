@@ -14,8 +14,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Page(props) {
-  var components = props;
-  console.log(components);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "list-group list-group-flush"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -87,8 +85,12 @@ var Contract = /*#__PURE__*/function (_Component) {
   _createClass(Contract, [{
     key: "render",
     value: function render() {
+      var components = this.components;
+      var componentTypes = this.props.componentTypes;
+      console.log(componentTypes);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Page__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        components: true
+        componentTypes: componentTypes,
+        components: components
       });
     }
   }]);
