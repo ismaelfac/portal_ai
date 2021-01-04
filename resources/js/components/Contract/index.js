@@ -5,7 +5,7 @@ class Contract extends Component {
 
     render() {
         return(
-            <Page />
+            <Page components />
         )
     }
 }
