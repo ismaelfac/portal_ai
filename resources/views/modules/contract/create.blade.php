@@ -30,7 +30,7 @@
                                 <input type="text" name="description_contract" class="form-control" placeholder="Titulo del contracto" aria-label="description_contract" aria-describedby="basic-addon1" />
                             </div>
                             <div>
-                                <example-component :componentTypes="{{ json_encode($componentTypes) }}"></example-component>
+                                <example-component :test-componentTypes="{{ json_encode($componentTypes) }}"></example-component>
                             </div>
                             <div class="input-group mb-3 col-md-12">
                                 <button type="submit" class="btn btn-outline-danger">Crear Contrato</button>

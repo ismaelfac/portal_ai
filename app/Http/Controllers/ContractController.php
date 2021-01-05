@@ -34,7 +34,8 @@ class ContractController extends Controller
     {
         $components = $this->ContractRepository->getComponents();
         $componentTypes = $this->ContractRepository->getComponentsType();
-        return view('modules.contract.create')->with(['components' => $components,'componentTypes' => $componentTypes]);
+        //->with(['components' => $components,'componentTypes' => $componentTypes])
+        return view('modules.contract.create',compact('components', 'componentTypes'));
     }
 
     /**

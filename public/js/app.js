@@ -1930,12 +1930,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['componentTypes'],
   data: function data() {
     return {
       componentTypes: []
     };
   },
+  props: ['componentTypes'],
   mounted: function mounted() {
     console.log('Component mounted.');
   }
@@ -37536,7 +37536,7 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("pre", [_vm._v("        @" + _vm._s(_vm.$componentTypes) + "\n    ")])
+    _c("pre", [_vm._v("        " + _vm._s(_vm.componentTypes) + "\n    ")])
   ])
 }
 var staticRenderFns = [

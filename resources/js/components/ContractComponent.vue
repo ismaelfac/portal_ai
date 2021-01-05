@@ -15,18 +15,18 @@
             </div>
         </div>
         <pre>
-            @{{ $componentTypes }}
+            {{ componentTypes }}
         </pre>
     </div>
 </template>
 <script>
     export default {
-        props: ['componentTypes'],
         data() {
             return {
                 componentTypes: []
             }
         },
+        props: ['componentTypes'],
         mounted() {
             console.log('Component mounted.')
         }
