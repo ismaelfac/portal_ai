@@ -12,6 +12,7 @@ class Template extends Model
 
     protected $fillable = [
         'contract_id',
+        'user_id',
         'title',
         'description',
         'isActive',
@@ -24,6 +25,11 @@ class Template extends Model
     public function getRouteKey()
     {
         return $this->slug;
+    }
+
+    public function user()
+    {
+        return $this->belongTo('App\Models\User','user_id');
     }
 
     public function contract()

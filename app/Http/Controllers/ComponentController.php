@@ -73,9 +73,9 @@ class ComponentController extends Controller
      * @param  \App\Models\Component  $component
      * @return \Illuminate\Http\Response
      */
-    public function edit(Component $component)
+    public function edit($component)
     {
-        //
+        dd($component);
     }
 
     /**

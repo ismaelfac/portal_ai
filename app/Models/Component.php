@@ -10,7 +10,7 @@ class Component extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['component_type_id','title', 'slug', 'content', 'isActive'];
+    protected $fillable = ['component_type_id', 'user_id', 'title', 'slug', 'content', 'isActive'];
 
     protected $casts = ['isActive' => 'boolean'];
 
@@ -23,6 +23,11 @@ class Component extends Model
     //     });
     // }
 
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
+
     public function contracts()
     {
         return $this->belongsToMany('App\Models\Contract')->using('App\Models\ComponentContract');
@@ -31,6 +36,11 @@ class Component extends Model
     public function component_types()
     {
         return $this->belongsTo('App\Models\ComponentType','component_type_id');
+    }
+
+    public function user()
+    {
+        return $this->belongTo('App\Models\User','user_id');
     }
 
     static public function getComponentsActivesAndPublishedWithComponentsType()

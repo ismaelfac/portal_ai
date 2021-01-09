@@ -11,6 +11,7 @@ class Contract extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'user_id',
         'title',
         'slug',
         'description',
@@ -21,7 +22,18 @@ class Contract extends Model
         'isActive' => 'boolean',
     ];
 
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
+
     // relations
+
+    public function user()
+    {
+        return $this->belongTo('App\Models\User','user_id');
+    }
+
     public function components()
     {
         return $this->belongsToMany('App\Models\Component')->using('App\Models\ComponentContract');

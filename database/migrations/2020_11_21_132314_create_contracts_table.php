@@ -15,6 +15,7 @@ class CreateContractsTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('description');

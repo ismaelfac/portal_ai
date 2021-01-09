@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
-use App\Models\ComponentType;
-use Illuminate\Http\Request;
+use App\Http\Requests\Api\ComponenTypeRequest;
+use App\Repositories\ComponentsTypeRepository;
 
 class ComponentTypeController extends Controller
 {
+
+    private $ComponentsTypeRepository;
+
+    public function __construct(ComponentsTypeRepository $componentsTypeRepository)
+    {
+        $this->ComponentsTypeRepository = $componentsTypeRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class ComponentTypeController extends Controller
      */
     public function index()
     {
-        $component_types = ComponentType::paginate(10);
+        $component_types = $this->ComponentsTypeRepository->getAll('');
         return view('modules.component_type.index', compact('component_types'));
     }
 
@@ -35,22 +42,19 @@ class ComponentTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComponenTypeRequest $request)
     {
-        $component_types = ComponentType::create([
-            "title" => strtoupper($request['title']),
-            "slug" => Str::of($request['title'])->slug('-'),
-        ]);
+        $component_types = $contract = $this->ComponentsTypeRepository->created($request);
         return redirect()->route("component_types.index", $component_types->id)->with("success", __("Tipo de Componente Creado"));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ComponentType  $componentType
+     * @param  \App\Models\  $componentType
      * @return \Illuminate\Http\Response
      */
-    public function show(ComponentType $componentType)
+    public function show($componentType)
     {
         //
     }
@@ -58,10 +62,10 @@ class ComponentTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ComponentType  $componentType
+     * @param  \App\Models\ $componentType
      * @return \Illuminate\Http\Response
      */
-    public function edit(ComponentType $componentType)
+    public function edit($componentType)
     {
         //
     }
@@ -70,10 +74,10 @@ class ComponentTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ComponentType  $componentType
+     * @param  \App\Models\  $componentType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ComponentType $componentType)
+    public function update(ComponenTypeRequest $request, $componentType)
     {
         //
     }
@@ -81,10 +85,10 @@ class ComponentTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ComponentType  $componentType
+     * @param  \App\Models\  $componentType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ComponentType $componentType)
+    public function destroy($componentType)
     {
         //
     }

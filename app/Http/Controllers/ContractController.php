@@ -69,7 +69,7 @@ class ContractController extends Controller
      */
     public function edit($contract)
     {
-        //
+        dd($contract);
     }
 
     /**

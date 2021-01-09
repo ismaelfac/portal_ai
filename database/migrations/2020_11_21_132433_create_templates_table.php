@@ -16,6 +16,7 @@ class CreateTemplatesTable extends Migration
         Schema::create('templates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('contract_id')->references('id')->on('contracts')->onUpdate('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->string('description');

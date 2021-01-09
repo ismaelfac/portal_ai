@@ -28,7 +28,7 @@
                                 <th scope="row">{{ $component->id }}</th>
                                 <td style="text-align: center">{{ $component->title }}</td>
                                 <td style="text-align: justify">{!! $component->content !!}</td>
-                                <td><a href="{{ route("components.edit", ["component" => $component ])}}" class="btn btn-outline-danger">Editar</a></td>
+                                <td><a href="{{ url("components/$component->slug/edit ") }}" class="btn btn-outline-danger">Editar</a></td>
                             </tr>
                             @empty
                             <tr>

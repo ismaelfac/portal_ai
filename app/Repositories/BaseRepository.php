@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 abstract class BaseRepository
 {
-    abstract public function getModel();
+    abstract protected function getModel();
 
 
     public function find($id)
@@ -12,7 +12,7 @@ abstract class BaseRepository
         return $this->getModel()->find($id);
     }
 
-    public function getAll(string $relations = NULL)
+    public function getAll(string $relations = NULL, array $where = NULL)
     {
         return $this->getModel()->where('isActive',true)->paginate();
     }

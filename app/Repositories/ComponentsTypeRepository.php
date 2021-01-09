@@ -9,7 +9,7 @@ class ComponentsTypeRepository extends BaseRepository
 {
     public function getModel()
     {
-        return new Component();
+        return new ComponentType();
     }
 
     public function getComponentsType()

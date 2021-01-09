@@ -9,7 +9,12 @@ class ComponentType extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug'];
+    protected $fillable = ['user_id','title', 'slug'];
+
+    public function user()
+    {
+        return $this->belongTo('App\Models\User','user_id');
+    }
 
     public function components()
     {

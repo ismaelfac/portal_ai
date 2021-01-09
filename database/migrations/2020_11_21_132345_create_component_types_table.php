@@ -15,8 +15,10 @@ class CreateComponentTypesTable extends Migration
     {
         Schema::create('component_types', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->string('title')->unique();
             $table->string('slug')->unique();
+            $table->boolean('isActive')->default(false);
         });
     }
 
