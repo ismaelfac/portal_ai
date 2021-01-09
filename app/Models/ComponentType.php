@@ -9,8 +9,10 @@ class ComponentType extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','title', 'slug'];
-
+    protected $fillable = ['user_id','title', 'slug', 'isActive'];
+    protected $casts = [
+        'isActive' => 'boolean',
+    ];
     public function user()
     {
         return $this->belongTo('App\Models\User','user_id');

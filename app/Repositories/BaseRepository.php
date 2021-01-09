@@ -12,7 +12,7 @@ abstract class BaseRepository
         return $this->getModel()->find($id);
     }
 
-    public function getAll(string $relations = NULL, array $where = NULL)
+    public function getAll()
     {
         return $this->getModel()->where('isActive',true)->paginate();
     }

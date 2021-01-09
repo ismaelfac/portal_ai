@@ -12,6 +12,11 @@ class ComponentsTypeRepository extends BaseRepository
         return new ComponentType();
     }
 
+    public function getAll()
+    {
+        return ComponentType::paginate();
+    }
+
     public function getComponentsType()
     {
         return ComponentType::select('id','title')->get();
