@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Repositories;
+use App\Models\User;
 
 abstract class BaseRepository
 {
+
+
     abstract protected function getModel();
 
 

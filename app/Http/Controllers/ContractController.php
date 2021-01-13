@@ -96,10 +96,10 @@ class ContractController extends Controller
     }
 
     public function downloadpdf($contract){
-        $data = Contract::where('id',$contract)->with('components')->get();
+        /*$data = Contract::where('id',$contract)->with('components')->get();
 
         $pdf = \PDF::loadView('pdf.contract', compact('data'));
         //dd($pdf);
-        return $pdf->download($data[0]->title.'.pdf');
+        return $pdf->download($data[0]->title.'.pdf');*/
     }
 }

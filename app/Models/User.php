@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'isActive'
     ];
 
     /**
@@ -41,4 +42,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isInactive()
+    {
+        return $this->state === false;
+    }
+
+    public function isActive()
+    {
+        return $this->isActive = true;
+    }
+
+    public function owns(Model $model)
+    {
+        return $this->id === $model->user_id;
+    }
+
+    public function scopeName($query, $name)
+    {
+        if (trim($name) != "") {
+            $query->where('name', 'LIKE', '%' . $name . '%');
+        }
+    }
+    public function scopeEmail($query, $email)
+    {
+        if (trim($email) != "") {
+            $query->where('email', 'LIKE', '%' . $email . '%');
+        }
+    }
 }

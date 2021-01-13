@@ -51,6 +51,15 @@
                                   </div>
                                 </div>
                             </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Usuarios del Sistema</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <a href="/users" class="btn btn-primary">Entrar</a>
+                                  </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="card-header">{{ __('Plantillas Favoritas') }}</div>
