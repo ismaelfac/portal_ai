@@ -13,6 +13,7 @@ class ComponentType extends Model
     protected $casts = [
         'isActive' => 'boolean',
     ];
+    public $timestamps = false;
     public function user()
     {
         return $this->belongTo('App\Models\User','user_id');

@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Repositories;
-use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 abstract class BaseRepository
 {
-
 
     abstract protected function getModel();
 
@@ -22,7 +22,19 @@ abstract class BaseRepository
 
     public function created($data)
     {
-        return $this->getModel()->create($data);
+        return $this->getModel()->create([
+            $this->getData($data->request),
+            (!'slug') ?: 'slug' => Str::slug($data['title'], '-'),
+            (!'user_id') ?: 'user_id' => Auth::id(),
+            (!'isActive') ?: 'isActive' => 1
+        ]);
+    }
+
+    public function getData($data)
+    {
+        foreach ($data as $key) {
+            
+        }
     }
 
     public function updated($object, $data)

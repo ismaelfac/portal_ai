@@ -8,6 +8,7 @@ use App\Repositories\UserRepository;
 
 class UserController extends Controller
 {
+
     private $UserRepository;
 
     public function __construct(UserRepository $userRepository)
@@ -44,7 +45,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $this->UserRepository->created($request->all());
-        return redirect()->route("users")->with("success", __("Usuario Creado"));
+        return redirect()->route("auth.users")->with("success", __("Usuario Creado"));
     }
 
     /**
